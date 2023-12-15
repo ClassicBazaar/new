@@ -1,0 +1,94 @@
+<header
+    class="w-100"
+    style="position: fixed;z-index: 10;  background-color: rgb(0 0 0 / 50%);"
+>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarTogglerDemo01"
+                aria-controls="navbarTogglerDemo01"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <a href="/">
+                    <img
+                        src="/images/home/logo.JPG"
+                        alt=""
+                        style="width: 1.8em; margin-right: 0.5em;"
+                        class="rounded-circle img-fluid"
+                    /></a>
+                <a class="navbar-brand" href="/">Classic bazaar</a>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a
+                            class="nav-link active"
+                            aria-current="page"
+                            href="/"
+                        >Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/products">products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cart">cart
+                            <sup>
+                                <span class="badge bg-success " id="cartcount">{{cartcount}}</span>
+                            </sup>
+                        </a>
+                    </li>
+                    {{#if user}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/orders">all orders</a>
+                        </li>
+                    {{/if}}
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
+                            href="#footer"
+                            tabindex="-1"
+                            aria-disabled="true"
+                        >Feedback</a>
+                    </li>
+                </ul>
+                {{! sign up dropdown button }}
+                <div class="dropdown">
+                    <button
+                        class="btn btn-success dropdown-toggle"
+                        type="button"
+                        id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                    >
+                        {{#if user}}
+                            {{user.name}}
+                        {{else}}
+                            Account
+                        {{/if}}
+                    </button>
+                    <ul
+                        class="dropdown-menu bg-dark"
+                        aria-labelledby="dropdownMenuButton1"
+                    >
+                        {{#if user}}
+                            <li><a
+                                    class="dropdown-item text-white"
+                                    href="/logout"
+                                >Logout</a></li>
+                        {{else}}
+                            <li><a
+                                    class="dropdown-item text-white"
+                                    href="/login"
+                                >Login</a></li>
+                        {{/if}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

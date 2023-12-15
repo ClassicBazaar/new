@@ -1,0 +1,151 @@
+<section style="padding-top: 5em;">
+    {{! container }}
+    <div class="container">
+        {{! row }}
+        <div class="row">
+            <div class="col-12 text-center">
+                {{! title }}
+                <h1 class="text-success mt-5">Edit product</h1>
+            </div>
+            <div class="col-12">
+                {{! underline }}
+                <hr
+                    class="text-dark mb-5"
+                    style="width: 50%; margin-left: auto ; margin-right: auto; margin-top: 0px;"
+                />
+            </div>
+            {{! form }}
+            <form
+                enctype="multipart/form-data"
+                action="/admin/edit-product/{{product._id}}"
+                method="post"
+                class="col-6 m-auto mb-5"
+            >
+                {{! name of product }}
+                <div class="col-12 form-floating">
+                    <input
+                        value="{{product.name}}"
+                        type="text"
+                        class="form-control"
+                        name="name"
+                        id="name floatingInput"
+                        placeholder="Name"
+                        required
+                    />
+                    <label for="floatingInput">Name</label>
+                </div>
+                {{! price }}
+                <div class="col-12 mt-3 form-floating">
+                    <input
+                        value="{{product.price}}"
+                        type="number"
+                        class="form-control"
+                        name="price"
+                        id="price floatingInput"
+                        placeholder="Price"
+                        required
+                    />
+                    <label for="floatingInput">Price</label>
+                </div>
+                {{! category }}
+                <div class="col-12 mt-3 form-floating">
+                    {{! <input
+                        type="text"
+                        class="form-control"
+                        name="category"
+                        id="price floatingInput"
+                        placeholder="Category"
+                        required
+                    /> }}
+                    <select
+                        name="category"
+                        id="floatingInput"
+                        class="form-select"
+                    >
+                        <option
+                            value="{{product.category}}"
+                        >{{product.category}}</option>
+                        <option value="featured products">Featured products</option>
+                        <option value="Mens">Mens</option>
+                        <option value="Kids">kids</option>
+                        <option value="Bags">Bags</option>
+                        <option value="Footwears">Footwears</option>
+                        <option value="Gadgets">Gadgets</option>
+                        <option value="Fashion accessories">Fashion accessories</option>
+                        <option value="Gadget accessories">Gadget accessories</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="daily using products">daily using
+                            products</option>
+                    </select>
+                    <label for="floatingInput">Category</label>
+                </div>
+                {{! offer }}
+                <div class="col-12 mt-3 form-floating">
+                    <input
+                        value="{{product.offer}}"
+                        type="number"
+                        class="form-control"
+                        name="offer"
+                        id="offer floatingInput"
+                        placeholder="offer"
+                        required
+                    />
+                    <label for="floatingInput">Offer</label>
+                </div>
+                {{! delivery charge }}
+                <div class="col-12 mt-3 form-floating">
+                    <input
+                        value="{{product.charge}}"
+                        type="text"
+                        class="form-control"
+                        name="charge"
+                        id="charge floatingInput"
+                        placeholder="charge"
+                        required
+                    />
+                    <label for="floatingInput">Delivery charge</label>
+                </div>
+                <div
+                    class="col-12 text-light bg-dark mt-3 text-center"
+                    style="border-radius: 2em;"
+                >
+                    <h3 class=""><i> Image</i></h3>
+                    <img
+                        src="/product-images/{{product._id}}.jpg"
+                        class="w-25 mb-2"
+                        alt=""
+                        id="img-pre"
+                        style="border-radius: 1em;"
+                    />
+                </div>
+                {{! image file  }}
+                <div class="col-12 mt-3">
+                    <div class="input-group">
+                        <input
+                            onchange="viewimage(event)"
+                            name="image"
+                            type="file"
+                            class="form-control"
+                            aria-label="Upload"
+                        />
+                    </div>
+                </div>
+                {{! submit button }}
+                <div class="col-12 mt-3">
+                    <input
+                        type="submit"
+                        value="submit"
+                        placeholder="Submit"
+                        class="form-control btn btn-success align-items-center"
+                        aria-label="submit"
+                    />
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<script>
+   function viewimage(event){
+    document.getElementById('img-pre').src=URL.createObjectURL(event.target.files[0])
+   }
+</script>

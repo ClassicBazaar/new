@@ -1,0 +1,116 @@
+<section
+    class="bg-info"
+    style="width: 100%; min-height: 100vh; padding-top: 5em;"
+>
+    <h1 class="text-white text-center">Your cart [{{cartcount}} items]</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <hr
+                    class="text-white mb-5"
+                    style="width: 50%; margin-left: auto ; margin-right: auto; margin-top: 0px;"
+                />
+            </div>
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table
+                        class="table table-dark table-striped table-hover table-responsive"
+                    >
+                        <thead>
+                            <tr>
+                                <th scope="col">product</th>
+                                <th scope="col">name</th>
+                                <th scope="col">price</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each items}}
+                                <tr>
+
+                                    <td><img
+                                            src="/product-images/{{this.product._id}}.jpg"
+                                            alt=""
+                                            style="width: 4em;"
+                                            class="rounded-circle"
+                                        /></td>
+                                    <td>{{this.product.name}}</td>
+                                    <td>₹{{this.product.price}} </td>
+                                    <th>
+                                        <button
+                                            class="btn btn-primary btn-sm rounded-circle w-auto"
+                                            onclick="changeQuantity('{{this._id}}','{{this.item}}',-1,'-{{this.product.price}}')"
+                                        >-</button>
+                                        <br>
+                                        <a
+                                            class="btn btn-light btn-sm quantity-tag mt-1 w-auto mb-1 rounded-circle "
+                                            id="{{this.product._id}}"
+                                            style="pointer-events: none;"
+                                        >{{this.quantity}}</a>
+                                        <br>
+                                        <button
+                                            class="btn btn-primary btn-sm rounded-circle w-auto "
+                                            onclick="changeQuantity('{{this._id}}','{{this.item}}',1,'{{this.product.price}}')"
+                                        >+</button>
+                                    </th>
+                                    {{! delete button }}
+                                    <td>
+                                        <button
+                                            class="btn  "
+                                            onclick="deleteproduct('{{this._id}}','{{this.item}}')"
+                                        >
+                                            <i
+                                                class="btn rounded-circle  btn-danger bi bi-trash3-fill"
+                                            ></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-4 col-12 mb-5" style="margin-left: auto;">
+                <h4 class="col-12 col-md-12 text-white float-end mb-auto">Price
+                    Details</h4>
+                <hr class="text-dark mt-5" />
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col " class="text-secondary">no. of items
+                                :</th>
+                            <th scope="col" class="text-">{{cartcount}}</th>
+                        </tr>
+                        <tr>
+                            <th scope="col" class="text-secondary">price ({{cartcount}}
+                                item):</th>
+                            <th scope="col">₹<span
+                                    class="price"
+                                >{{price}}</span>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th scope="col" class="text-secondary">Delivery
+                                charge:</th>
+                            <th
+                                scope="col"
+                                class="text-success"
+                            >₹{{charge}}</th>
+                        </tr>
+                        <tr>
+                            <th scope="col"><b>Total price:</b></th>
+                            <th scope="col">₹<span
+                                    class="price"
+                                >{{total}}</span></th>
+                        </tr>
+                    </thead>
+                </table>
+                <div class="col-12">
+                    <a href="/place-order" class="btn btn-success w-100">Place
+                        order</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

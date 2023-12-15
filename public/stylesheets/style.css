@@ -1,0 +1,49 @@
+::-webkit-scrollbar {
+    height: 0.5em;
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(cyan, white);
+    border-radius: 100vw;
+}
+* {
+    scroll-behavior: smooth;
+}
+.home {
+    height: 100vh;
+    background: url(/images/home/homepage.JPG) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+.scroll {
+    overflow-y: scroll;
+}
+.scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.scroller {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 23%;
+    overflow-x: scroll;
+}
+.card {
+    margin-top: 2em;
+    margin-left: 1em;
+    border: 10px black;
+}
+.hover {
+    transition: 0.5s all ease-in-out;
+}
+.hover:hover {
+    box-shadow: 0 0px 25px black;
+    transform: scale(1.01);
+}
+.order {
+    background: url(/images/home/download.jpeg) no-repeat;
+    background-size: cover;
+    background-position: center;
+}

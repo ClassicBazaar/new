@@ -1,0 +1,75 @@
+<section style="padding-top: 5em;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                {{! title }}
+                <h1 class="text-success mt-5">Admin Login</h1>
+            </div>
+            <div class="col-12">
+                {{! underline }}
+                <hr
+                    class="text-dark mb-5"
+                    style="width: 50%; margin-left: auto ; margin-right: auto; margin-top: 0px;"
+                />
+            </div>
+            {{!  form }}
+            <form
+                action="/admin/admin-login"
+                method="post"
+                class="form-floating col-8 m-auto"
+            >
+                {{#if adminloginerr}}
+                    <h5
+                        class="text-center text-danger text-decoration-underline"
+                    >{{adminloginerr}}</h5>
+                {{/if}}
+                <div class="col-12">
+                    <div class="form-floating mb-3">
+                        <input
+                            type="text"
+                            name="name"
+                            class="form-control"
+                            id="floatingInput"
+                            placeholder="text"
+                            required
+                        />
+                        <label for="floatingInput">Name</label>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-floating mb-3">
+                        <input
+                            type="email"
+                            name="email"
+                            class="form-control"
+                            id="floatingInput"
+                            placeholder="name@example.com"
+                            required
+                        />
+                        <label for="floatingInput">Email address</label>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-floating">
+                        <input
+                            type="password"
+                            name="password"
+                            class="form-control"
+                            id="floatingPassword"
+                            placeholder="Password"
+                            required
+                        />
+                        <label for="floatingPassword">Password</label>
+                    </div>
+                </div>
+                <div class="col-12 mt-3">
+                    <input
+                        type="submit"
+                        value="submit"
+                        class="form-control btn btn-success"
+                    />
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
