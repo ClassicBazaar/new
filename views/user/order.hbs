@@ -26,6 +26,7 @@
                                         id="fname"
                                         style="border-radius: 5em;"
                                         placeholder="First Name"
+                                        required
                                     />
                                 </div>
                             </div>
@@ -39,6 +40,7 @@
                                         id="lname"
                                         style="border-radius: 5em;"
                                         placeholder="Last Name"
+                                        required
                                     />
                                 </div>
                             </div>
@@ -52,6 +54,7 @@
                                         id="email"
                                         style="border-radius: 5em;"
                                         placeholder="Email"
+                                        required
                                     />
                                 </div>
                             </div>
@@ -64,6 +67,7 @@
                                         id="select"
                                         aria-controls="select"
                                         style="border-radius: 5em;"
+                                        required
                                     >
                                         <optgroup class="bg-dark text-white">
                                             <option
@@ -955,6 +959,7 @@
                                         id="number"
                                         style="border-radius: 5em;"
                                         placeholder="Mobile"
+                                        required
                                     />
                                 </div>
                             </div>
@@ -968,6 +973,7 @@
                                         id="address"
                                         style="border-radius: 5em;"
                                         placeholder="Address"
+                                        required
                                     />
                                 </div>
                             </div>
@@ -979,6 +985,7 @@
                                         id="state"
                                         style="border-radius: 5em;"
                                         class="form-select hide-scroll"
+                                        required
                                     >
                                         <optgroup class="bg-dark text-white">
                                             <option
@@ -1092,6 +1099,7 @@
                                         id="city"
                                         style="border-radius: 5em;"
                                         placeholder="City"
+                                        required
                                     />
                                 </div>
                             </div>
@@ -1104,6 +1112,7 @@
                                         placeholder="Road/Area/Colony"
                                         name="roadareacolony"
                                         style="border-radius: 5em;"
+                                        required
                                     />
                                 </div>
                             </div>
@@ -1116,6 +1125,7 @@
                                         placeholder="Pincode"
                                         name="pincode"
                                         style="border-radius: 5em;"
+                                        required
                                     />
                                 </div>
                             </div>
@@ -1131,7 +1141,13 @@
                                     />
                                 </div>
                             </div>
-                            <input type="text" value="{{user._id}}" name="user" id="" hidden>
+                            <input
+                                type="text"
+                                value="{{user._id}}"
+                                name="user"
+                                id=""
+                                hidden
+                            />
                             {{! submit button }}
                             <div class="col-12">
                                 <div class="mt-3 mb-3">

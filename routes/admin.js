@@ -102,7 +102,7 @@ router.get("/allorders", verifyadminlogin, async (req, res) => {
     let orders = await producthelper.getallorder();
     res.render("admin/allorders", { admin: true, orders });
 });
-router.get("/view-products/:orderid/:userid", async (req, res) => {
+router.get("/view-products/:orderid/:userid",verifyadminlogin, async (req, res) => {
     console.log('hello');
     console.log(req.params.orderid, req.params.userid);
     let products = await producthelper.getsingleorder(
@@ -110,7 +110,7 @@ router.get("/view-products/:orderid/:userid", async (req, res) => {
         req.params.userid
     );
     let about = products[0];
-    res.render("admin/view-order-products", verifyadminlogin, {
+    res.render("admin/view-order-products",  {
         admin: true,
         products,
         about,

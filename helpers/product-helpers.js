@@ -2,7 +2,7 @@ var db = require("../config/connection");
 var collections = require("../config/collections");
 const { response } = require("express");
 const ObjectId = require("mongodb").ObjectId;
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 module.exports = {
     addproduct: (product, callback) => {
         console.log(product);
@@ -21,7 +21,7 @@ module.exports = {
                     .collection(collections.PRODUCT_COLLECTION)
                     .find({ category: category })
                     .toArray();
-                    resolve(products);
+                resolve(products);
             } else {
                 let products = await db
                     .get()
