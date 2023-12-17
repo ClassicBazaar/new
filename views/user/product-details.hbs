@@ -1,88 +1,33 @@
-{{! home page }}
-<section class="home" id="home">
+<section style="padding-top: 5em;" class="bg-dark min-vh-100">
     <div class="container">
         <div class="row">
+            <div class="col-12">
+                <h2 class="text-white text-center">{{product.name}}</h2>
+            </div>
+            <div class="col-12 m-auto">
+                <hr class="w-50 m-auto text-white" />
+            </div>
+            <br />
             <div class="col-12 text-center">
                 <img
-                    src="/images/home/logo.JPG"
-                    style="margin-top: 8em; "
-                    class="w-25 img-fluid rounded-circle"
-                    alt="logo"
-                />
-                <h4 style="font-weight: 600;" class="text-light mt-4">
-                    Classic Bazaar provides you
-                    <br />
-                    Trending dresses and Fashion Accessories
-                </h4>
-            </div>
-        </div>
-    </div>
-</section>
-{{! featured products  }}
-<section class="bg-dark">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="text-center text-light mt-3 mb-3">Featured Products</h1>
-            </div>
-            <div class="col-12">
-                <hr
-                    class="text-light mb-5"
-                    style="width: 50%; margin-left: auto ; margin-right: auto; margin-top: 0px;"
+                    src="/product-images/{{product._id}}.jpg"
+                    class="img-fluid rounded-circle align w-25"
                 />
             </div>
-            {{#each products}}
-
-                <div class="col-md-4 col-12 mt-2 mb-5" style="z-index: 0; ">
-                    <a href="/details/{{this._id}}" class="text-decoration-none text-dark ">
-                        <div class="card">
-                            <img
-                                src="/product-images/{{this._id}}.jpg"
-                                class="card-img-top"
-                                alt="{{this.title}}"
-                            />
-                            <div class="card-body bg-light">
-
-                                <h5 class="card-title ">{{this.name}}</h5>
-                                <hr />
-                                <div
-                                    style="background-color: rgb(147, 234, 181);; border-radius: 1em;"
-                                >
-                                    <p
-                                        class="card-text text-decoration-underline"
-                                        style="color: darkgreen; margin-left: 1em;  "
-                                    >
-                                        {{this.offer}}% off
-                                    </p>
-                                </div>
-                                <p class="card-text  mt-1">Price: ₹<span
-                                        style="color: #896633;"
-                                        class="text-decoration-underline"
-                                    >{{this.price}}</span></p>
-                                <div
-                                    style="background-color: rgb(180, 180, 180); border-radius: 1em; margin-top: -0.5em;"
-                                >
-                                    <p
-                                        class="card-text"
-                                        style="margin-left: 1em;"
-                                    ><span class="text-dark">Delivery Charge</span>:
-                                        <span
-                                            class="text-success"
-                                        >{{this.charge}}</span>
-                                    </p>
-                                </div>
-                                <button
-                                    class="btn mt-1 m-auto w-100 mt-3"
-                                    onclick="addtocart('{{this._id}}')"
-                                    style="background-color: #896633; color: white; "
-                                >
-                                    <i class="bi bi-cart4"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </a>
+            <div class="col-12 col-md-6 m-auto row bg-success mt-3 mb-5 " style="border-radius: 10em;">
+                <div class="col-12">
+                    <h4 class="text-white text-center mt-3">price:
+                        <span class="text-warning">₹{{product.price}}</span></h4>
                 </div>
-            {{/each}}
+                <div class="col-12">
+                    <h4 class="text-white text-center mt-3">offer:
+                        <span class="text-dark">{{product.offer}}%</span></h4>
+                </div>
+                <div class="col-12 mb-5">
+                    <h4 class="text-white text-center mt-3">Delivery charge:
+                        <span class="text-info">₹{{product.charge}}</span></h4>
+                </div>
+            </div>
         </div>
     </div>
 </section>
