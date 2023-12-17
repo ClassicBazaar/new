@@ -4,7 +4,7 @@ const state = {
 };
 module.exports.connect = async function (done) {
     // needed things for connecting to server
-    // const url = "mongodb+srv://classicbazaar313:classicbazaar313ajmal@classicbazaardatabase.w0048g7.mongodb.net/";
+    // const url = "mongodb://0.0.0.0:27017";
     const url ='mongodb+srv://classicbazaar313:pyoGSuv65lhESECu@classicbazaardatabase.w0048g7.mongodb.net/?retryWrites=true&w=majority'
     const dbname = "Classicbazaar";
     const client = new MongoClient(url);
