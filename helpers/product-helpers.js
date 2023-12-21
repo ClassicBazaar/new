@@ -5,6 +5,7 @@ const ObjectId = require("mongodb").ObjectId;
 const bcrypt = require("bcryptjs");
 module.exports = {
     addproduct: (product, callback) => {
+        product.size = product.size.split(",");
         console.log(product);
         db.get()
             .collection("products")
@@ -53,6 +54,7 @@ module.exports = {
         });
     },
     updateproduct: (id, product) => {
+        product.size = product.size.split(",");
         return new Promise((resolve, reject) => {
             db.get()
                 .collection(collections.PRODUCT_COLLECTION)
@@ -63,11 +65,14 @@ module.exports = {
                             name: product.name,
                             price: product.price,
                             category: product.category,
+                            offer:product.offer,
+                            charge:product.charge,
+                            size:product.size
                         },
                     }
                 )
                 .then((response) => {
-                    resolve();
+                    resolve(response);
                 });
         });
     },
