@@ -41,6 +41,22 @@
                                 onclick="changeQuantity('{{this._id}}','{{this.item}}',1,'{{this.product.price}}')"
                             >+</button>
                         </div>
+                        {{! size }}
+                        <select
+                            class="item-size m-auto"
+                            id="{{this._id}}"
+                            style="-webkit-appearance: none !important;"
+                            onchange="changesize(this.value,'{{this._id}}','{{this.product._id}}')"
+                        >
+                        <option value="{{this.size}}" class="option-group">{{this.size}}</option>
+                         {{#each this.product.size}}
+                                <option
+                                    value="{{this}}"
+                                    class="option-group"
+                                >{{this}}</option>
+                            {{/each}}
+                        </select>
+                        {{! delte button }}
                         <button
                             class="cart-item-delete-btn btn"
                             onclick="deleteproduct('{{this._id}}','{{this.item}}')"

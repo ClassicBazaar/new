@@ -54,7 +54,7 @@ body::-webkit-scrollbar {
         margin-bottom: 2em;
         display: grid;
         grid-auto-flow: dense;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         grid-template-rows: repeat(2, 1fr);
     }
     .cart-item-image {
@@ -69,7 +69,7 @@ body::-webkit-scrollbar {
         margin: auto;
         font-size: 0.97rem;
         grid-row: 1/2;
-        grid-column: 2/5;
+        grid-column: 2/6;
     }
     .cart-item-price {
         align-self: center;
@@ -103,10 +103,23 @@ body::-webkit-scrollbar {
     .cart-item-delete-btn {
         border-radius: 5em;
         grid-row: 2/3;
-        grid-column: 4/5;
+        grid-column: 5/6;
     }
     .border-r {
         border-radius: 25% !important;
+    }
+    .item-size{
+        text-align: center;
+        grid-row: 2/3;
+        grid-column: 4/5;
+        border-radius: 25%;
+        width: 2em;
+        border: 1px white transparent;
+    }
+    .option-group{
+        background-color: rgb(41, 40, 40);
+        text-align: center;
+        color: white;
     }
 }
 
@@ -117,7 +130,7 @@ body::-webkit-scrollbar {
         margin-bottom: 2em;
         border-radius: 9em;
         background-color: grey;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(6, 1fr);
         grid-template-rows: repeat(1, 1fr);
     }
     .cart-item-image {
@@ -167,11 +180,23 @@ body::-webkit-scrollbar {
     .cart-item-delete-btn {
         border-radius: 5em;
         grid-row: 1/2;
-        grid-column: 5/6;
+        grid-column: 6/7;
     }
     .border-r {
         border-radius: 25% !important;
     }
-   
+    .item-size{
+        text-align: center;
+        grid-row: 1/2;
+        grid-column: 5/6;
+        border-radius: 25%;
+        width: 2em;
+        border: 1px white transparent;
+    }
+    .option-group{
+        background-color: rgb(41, 40, 40);
+        text-align: center;
+        color: white;
+    }
 
 }

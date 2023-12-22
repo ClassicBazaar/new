@@ -143,6 +143,7 @@ module.exports = {
                         $project: {
                             item: "$products.item",
                             quantity: "$products.quantity",
+                            size: "$products.size",
                         },
                     },
                     {
@@ -157,6 +158,7 @@ module.exports = {
                         $project: {
                             item: 1,
                             quantity: 1,
+                            size: 1,
                             product: { $arrayElemAt: ["$product", 0] },
                         },
                     },
@@ -407,7 +409,7 @@ module.exports = {
                         $match: { user: new ObjectId(userid) },
                     },
                     {
-                        $match:{_id: new ObjectId(orderid)}
+                        $match: { _id: new ObjectId(orderid) },
                     },
                     {
                         $unwind: "$product",
@@ -450,11 +452,29 @@ module.exports = {
                     },
                 ])
                 .toArray();
-                if(items){
-                    resolve(items)
-                }else{
-                    resolve()
-                }
-            });
+            if (items) {
+                resolve(items);
+            } else {
+                resolve();
+            }
+        });
+    },
+    changesize: (selectedsize, cartid, productid) => {
+        return new Promise((resolve, reject) => {
+            db.get()
+                .collection(collections.CART_COLLECTION)
+                .updateOne(
+                    {
+                        _id: new ObjectId(cartid),
+                        "products.item": new ObjectId(productid),
+                    },
+                    {
+                        $set: { "products.$.size": selectedsize },
+                    }
+                )
+                .then((response) => {
+                    resolve(selectedsize);
+                });
+        });
     },
 };

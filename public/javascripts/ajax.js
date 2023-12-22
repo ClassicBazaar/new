@@ -87,3 +87,19 @@ function Status(type, orderid) {
         },
     });
 }
+function changesize(size,cartid,productid) {
+    $.ajax({
+        url: "/changesize",
+        data: {
+            size: size,
+            cartid: cartid,
+            productid:productid
+        },
+        method: "post",
+        success: (response) => {
+            if(response){
+                alert(" size "+response+ " is selected")
+            }
+        },
+    });
+}

@@ -17,6 +17,7 @@
 
                             <h5 class="card-title">{{this.product.name}}</h5>
                             <hr />
+                            {{! price }}
                             <p
                                 class="card-text mt-1"
                                 style="margin-left: 1em;"
@@ -24,6 +25,7 @@
                                     style="color: #896633; "
                                     class="text-decoration-underline"
                                 >{{this.product.price}}</span></p>
+                            {{! quantity }}
                             <div
                                 style="background-color: rgb(147, 234, 181);; border-radius: 1em;  margin-top: -0.5em;"
                             >
@@ -35,13 +37,25 @@
                                     {{this.quantity}}
                                 </p>
                             </div>
+                            {{! size }}
+                            <div
+                            class="bg-info mt-2"
+                                style=" border-radius: 1em;  margin-top: -0.5em;"
+                            >
+                                <p
+                                    class="card-text "
+                                    style="color: rgb(0, 0, 0); margin-left: 1em;  "
+                                >
+                                    size :
+                                    {{this.size}}
+                                </p>
+                            </div>
+                            {{! status }}
                             <div
                                 style="background-color: rgb(180, 180, 180); border-radius: 1em; margin-top: 1em;"
                             >
-                                <p
-                                    class="card-text"
-                                    style="margin-left: 1em;"
-                                ><span class="text-dark">Status</span>:
+                                <p class="card-text" style="margin-left: 1em;">
+                                    <span class="text-dark">Status</span>:
                                     <span
                                         class="text-dark"
                                     >{{this.status}}</span>
@@ -66,7 +80,9 @@
                                 class="text-success"
                             >₹{{about.price}}</span></H6>
                         <p class="card-text">status:
-                            <span class="text-success"><span id="status-pre">{{about.status}}</span>
+                            <span class="text-success"><span
+                                    id="status-pre"
+                                >{{about.status}}</span>
                                 <span>↓</span>
                             </span>
                             <br />
@@ -78,7 +94,7 @@
                                 class="btn btn-success mt-2"
                                 onclick="Status('ordered','{{about._id}}')"
                             >Ordered</button>
-                            <br>
+                            <br />
                             <a
                                 onclick="return confirm('are you Sure you want to delete this order from the all orders')"
                                 class="btn btn-danger mt-2"

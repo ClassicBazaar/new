@@ -188,6 +188,7 @@ router.get("/place-order", verifylogin, async (req, res) => {
 });
 router.post("/order-product", verifylogin, async (req, res) => {
     let products = await userhelpers.getcartitemsfororder(req.session.user._id);
+    console.log(products);
     let totalprice = await userhelpers.gettotalprice(req.session.user._id);
     if (products) {
         userhelpers
@@ -228,5 +229,12 @@ router.get('/details/:productid',async(req,res)=>{
     let product=await producthelper.getproduct(productid)
     res.render('user/product-details',{product})
 })
-
+router.post('/changesize',(req,res)=>{
+    let productid=req.body.productid
+    let cartid=req.body.cartid
+    let selectedsize=req.body.size
+    userhelpers.changesize(selectedsize,cartid,productid).then((response)=>{
+        res.json(response)
+    })
+})
 module.exports = router;
