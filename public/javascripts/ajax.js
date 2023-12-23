@@ -8,8 +8,7 @@ function addtocart(id) {
                 count = parseInt(count) + 1;
                 $("#cartcount").html(count);
                 alert("Item added to cart");
-            }
-            if (response.notlogin) {
+            } else {
                 alert("You have to login first to add this product to cart");
             }
         },
@@ -87,18 +86,18 @@ function Status(type, orderid) {
         },
     });
 }
-function changesize(size,cartid,productid) {
+function changesize(size, cartid, productid) {
     $.ajax({
         url: "/changesize",
         data: {
             size: size,
             cartid: cartid,
-            productid:productid
+            productid: productid,
         },
         method: "post",
         success: (response) => {
-            if(response){
-                alert(" size "+response+ " is selected")
+            if (response) {
+                alert(" size " + response + " is selected");
             }
         },
     });
