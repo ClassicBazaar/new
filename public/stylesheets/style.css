@@ -1,3 +1,10 @@
+#loading{
+    height: 100vh;
+    background: url(/images/home/loading.gif) no-repeat;
+    background-size: auto;
+    background-position: center;
+}
+
 
 ::-webkit-scrollbar {
     height: 0.5em;
