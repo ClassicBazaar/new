@@ -82,12 +82,6 @@ module.exports = {
                 .get()
                 .collection(collections.ORDER_COLLECTION)
                 .aggregate([
-                    // {
-                    //     $match: { user: new ObjectId(userid) },
-                    // },
-                    // {
-                    //     $unwind: "$product",
-                    // },
                     {
                         $project: {
                             address: "$address",

@@ -217,6 +217,7 @@ router.get(
             req.params.orderid,
             req.session.user._id
         );
+        console.log(product);
         let order = await userhelpers.getorderitems(req.session.user._id);
         let about = order[0];
         if (product) {

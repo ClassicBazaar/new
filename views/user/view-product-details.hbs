@@ -17,6 +17,7 @@
 
                             <h5 class="card-title">{{this.product.name}}</h5>
                             <hr />
+                            {{!-- price --}}
                             <p
                                 class="card-text mt-1"
                                 style="margin-left: 1em;"
@@ -24,6 +25,7 @@
                                     style="color: #896633; "
                                     class="text-decoration-underline"
                                 >{{this.product.price}}</span></p>
+                            {{! quantity }}
                             <div
                                 style="background-color: rgb(147, 234, 181);; border-radius: 1em;  margin-top: -0.5em;"
                             >
@@ -35,6 +37,20 @@
                                     {{this.quantity}}
                                 </p>
                             </div>
+                            {{! size }}
+                            <div
+                                class="bg-info mt-2"
+                                style=" border-radius: 1em;  margin-top: -0.5em;"
+                            >
+                                <p
+                                    class="card-text"
+                                    style="color: rgb(0, 0, 0); margin-left: 1em;  "
+                                >
+                                    size :
+                                    {{this.size}}
+                                </p>
+                            </div>
+                            {{! status }}
                             <div
                                 style="background-color: rgb(180, 180, 180); border-radius: 1em; margin-top: 1em;"
                             >
@@ -54,65 +70,65 @@
 
             {{/each}}
             <div class="col-12 col-md-4 m-md-auto mb-5">
-                    <div class="card text-white bg-dark">
-                        <div class="card-body">
-                            <h4 class="card-title">Ordered placed on
-                                <span class="text-success">
-                                    {{about.date}}/{{about.month}}/{{about.year}}</span></h4>
-                            <H6 class="">Total Amount:
-                                <span
-                                    class="text-success"
-                                >₹{{about.price}}</span></H6>
-                            <p class="card-text">status:
-                                <span class="text-success">{{about.status}}
-                                </span>
-                            </p>
+                <div class="card text-white bg-dark">
+                    <div class="card-body">
+                        <h4 class="card-title">Ordered placed on
+                            <span class="text-success">
+                                {{about.date}}/{{about.month}}/{{about.year}}</span></h4>
+                        <H6 class="">Total Amount:
+                            <span
+                                class="text-success"
+                            >₹{{about.price}}</span></H6>
+                        <p class="card-text">status:
+                            <span class="text-success">{{about.status}}
+                            </span>
+                        </p>
 
-                        </div>
-                        {{! drop down account }}
-                        <div class="dropup m-auto mb-2">
-                            <button
-                                class="btn btn-success dropdown-toggle"
-                                type="button"
-                                id="triggerId"
-                                data-bs-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                            >
-                                Address
-                            </button>
-                            <div
-                                class="dropdown-menu"
-                                aria-labelledby="triggerId"
-                                style="z-index: 0;"
-                            >
-                                <h6 class="dropdown-item">Name :
-                                    {{about.address.fname}}{{about.address.lname}}</h6>
-                                <h6 class="dropdown-item">Email :
-                                    {{about.address.email}}</h6>
-                                <h6 class="dropdown-item">phone: +{{about.address.countryphonenumber}}
-                                    {{about.address.number}}</h6>
-                                <h6 class="dropdown-item">address :
-                                    {{about.address.address}}</h6>
-                                {{!-- <h6 class="dropdown-item">Unit:
+                    </div>
+                    {{! drop down account }}
+                    <div class="dropup m-auto mb-2">
+                        <button
+                            class="btn btn-success dropdown-toggle"
+                            type="button"
+                            id="triggerId"
+                            data-bs-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                        >
+                            Address
+                        </button>
+                        <div
+                            class="dropdown-menu"
+                            aria-labelledby="triggerId"
+                            style="z-index: 0;"
+                        >
+                            <h6 class="dropdown-item">Name :
+                                {{about.address.fname}}{{about.address.lname}}</h6>
+                            <h6 class="dropdown-item">Email :
+                                {{about.address.email}}</h6>
+                            <h6 class="dropdown-item">phone: +{{about.address.countryphonenumber}}
+                                {{about.address.number}}</h6>
+                            <h6 class="dropdown-item">address :
+                                {{about.address.address}}</h6>
+                            {{!-- <h6 class="dropdown-item">Unit:
                                     {{about.address.unit}}</h6>
                                 <h6 class="dropdown-item">Size :
                                     {{about.address.size}}</h6> --}}
-                                <h6 class="dropdown-item">state :
-                                    {{about.address.state}}</h6>
-                                <h6 class="dropdown-item">City :
-                                    {{about.address.city}}</h6>
-                                <h6 class="dropdown-item">road/area/colony :
-                                    {{about.address.roadareacolony}}</h6>
-                                <h6 class="dropdown-item">Pincode :
-                                    {{about.address.pincode}}</h6>
-                                <h6 class="dropdown-item">House no. :
-                                    {{about.address.housenumber}}</h6>
+                            <h6 class="dropdown-item">state :
+                                {{about.address.state}}</h6>
+                            <h6 class="dropdown-item">City :
+                                {{about.address.city}}</h6>
+                            <h6 class="dropdown-item">road/area/colony :
+                                {{about.address.roadareacolony}}</h6>
+                            <h6 class="dropdown-item">Pincode :
+                                {{about.address.pincode}}</h6>
+                            <h6 class="dropdown-item">House no. :
+                                {{about.address.housenumber}}</h6>
 
-                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
 </section>

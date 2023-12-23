@@ -60,14 +60,21 @@ module.exports = {
             resolve(userdata);
         });
     },
-    addtocart: (productid, userid) => {
-        // default structure  object of cart products array
-        let productobject = {
-            item: new ObjectId(productid),
-            quantity: 1,
-        };
-        // using promise
+    addtocart: async (productid, userid) => {
         return new Promise(async (resolve, reject) => {
+            // getting the cart item size
+            let size = await db
+                .get()
+                .collection(collections.PRODUCT_COLLECTION)
+                .findOne({ _id: new ObjectId(productid) });
+
+            // default structure  object of cart products array
+            let productobject = {
+                item: new ObjectId(productid),
+                quantity: 1,
+                size: size.size[0],
+            };
+            // using promise
             // taking user cart from mongodb
             let usercart = await db
                 .get()
@@ -303,6 +310,7 @@ module.exports = {
     },
     //
     placeorder: (argument, products, totalprice, userid) => {
+        console.log(products);
         return new Promise(async (resolve, reject) => {
             let orderobj = {
                 address: {
@@ -312,8 +320,6 @@ module.exports = {
                     countryphonenumber: argument.countryphonenumber,
                     number: argument.number,
                     address: argument.address,
-                    unit: argument.unit,
-                    size: argument.size,
                     state: argument.state,
                     city: argument.city,
                     roadareacolony: argument.roadareacolony,
@@ -423,6 +429,7 @@ module.exports = {
                             user: "$user",
                             item: "$product.item",
                             quantity: "$product.quantity",
+                            size:'$product.size',
                             date: "$date",
                             month: "$month",
                             year: "$year",
@@ -444,6 +451,7 @@ module.exports = {
                             user: 1,
                             item: 1,
                             quantity: 1,
+                            size:1,
                             status: 1,
                             address: 1,
                             product: { $arrayElemAt: ["$product", 0] },
