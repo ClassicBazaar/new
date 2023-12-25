@@ -153,18 +153,17 @@
                 />
             </div>
             {{#each Mens}}
+                
                 <div class="col-md-4 col-12 mt-2 mb-5" style="z-index: 0; ">
-
                     <div class="card">
                         <a
                             href="/details/{{this._id}}"
                             class="text-decoration-none text-dark"
                         >
                             <img
-                                src="/product-images/{{this._id}}.jpg"
+                                src="{{this.image}}"
                                 class="card-img-top"
                                 alt="{{this.title}}"
-                                style="height: 22.5em;"
                             />
                         </a>
                         <div class="card-body bg-light">
@@ -172,7 +171,7 @@
                             <h5 class="card-title">{{this.name}}</h5>
                             <hr />
                             <div
-                                style="background-color: rgb(147, 234, 181); border-radius: 1em;"
+                                style="background-color: rgb(147, 234, 181);; border-radius: 1em;"
                             >
                                 <p
                                     class="card-text text-decoration-underline"
@@ -181,10 +180,7 @@
                                     {{this.offer}}% off
                                 </p>
                             </div>
-                            <p
-                                class="card-text mt-1"
-                                style="margin-left: 1em;"
-                            >Price: ₹<span
+                            <p class="card-text mt-1">Price: ₹<span
                                     style="color: #896633;"
                                     class="text-decoration-underline"
                                 >{{this.price}}</span></p>
@@ -200,12 +196,13 @@
                                     >{{this.charge}}</span>
                                 </p>
                             </div>
-                            <a
+                            <button
                                 class="btn mt-1 m-auto w-100 mt-3"
                                 onclick="addtocart('{{this._id}}')"
                                 style="background-color: #896633; color: white; "
-                            ><i class="bi bi-cart4"></i></a>
-
+                            >
+                                <i class="bi bi-cart4"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -227,18 +224,17 @@
                 />
             </div>
             {{#each Kids}}
+                
                 <div class="col-md-4 col-12 mt-2 mb-5" style="z-index: 0; ">
-
                     <div class="card">
                         <a
                             href="/details/{{this._id}}"
                             class="text-decoration-none text-dark"
                         >
                             <img
-                                src="/product-images/{{this._id}}.jpg"
+                                src="{{this.image}}"
                                 class="card-img-top"
                                 alt="{{this.title}}"
-                                style="height: 22.5em;"
                             />
                         </a>
                         <div class="card-body bg-light">
@@ -255,10 +251,7 @@
                                     {{this.offer}}% off
                                 </p>
                             </div>
-                            <p
-                                class="card-text mt-1"
-                                style="margin-left: 1em;"
-                            >Price: ₹<span
+                            <p class="card-text mt-1">Price: ₹<span
                                     style="color: #896633;"
                                     class="text-decoration-underline"
                                 >{{this.price}}</span></p>
@@ -274,12 +267,13 @@
                                     >{{this.charge}}</span>
                                 </p>
                             </div>
-                            <a
+                            <button
                                 class="btn mt-1 m-auto w-100 mt-3"
                                 onclick="addtocart('{{this._id}}')"
                                 style="background-color: #896633; color: white; "
-                            ><i class="bi bi-cart4"></i></a>
-
+                            >
+                                <i class="bi bi-cart4"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -301,18 +295,17 @@
                 />
             </div>
             {{#each Bags}}
+                
                 <div class="col-md-4 col-12 mt-2 mb-5" style="z-index: 0; ">
-
                     <div class="card">
                         <a
                             href="/details/{{this._id}}"
                             class="text-decoration-none text-dark"
                         >
                             <img
-                                src="/product-images/{{this._id}}.jpg"
+                                src="{{this.image}}"
                                 class="card-img-top"
                                 alt="{{this.title}}"
-                                style="height: 22.5em;"
                             />
                         </a>
                         <div class="card-body bg-light">
@@ -329,10 +322,7 @@
                                     {{this.offer}}% off
                                 </p>
                             </div>
-                            <p
-                                class="card-text mt-1"
-                                style="margin-left: 1em;"
-                            >Price: ₹<span
+                            <p class="card-text mt-1">Price: ₹<span
                                     style="color: #896633;"
                                     class="text-decoration-underline"
                                 >{{this.price}}</span></p>
@@ -348,12 +338,13 @@
                                     >{{this.charge}}</span>
                                 </p>
                             </div>
-                            <a
+                            <button
                                 class="btn mt-1 m-auto w-100 mt-3"
                                 onclick="addtocart('{{this._id}}')"
                                 style="background-color: #896633; color: white; "
-                            ><i class="bi bi-cart4"></i></a>
-
+                            >
+                                <i class="bi bi-cart4"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -375,18 +366,17 @@
                 />
             </div>
             {{#each Footwears}}
+                
                 <div class="col-md-4 col-12 mt-2 mb-5" style="z-index: 0; ">
-
                     <div class="card">
                         <a
                             href="/details/{{this._id}}"
                             class="text-decoration-none text-dark"
                         >
                             <img
-                                src="/product-images/{{this._id}}.jpg"
+                                src="{{this.image}}"
                                 class="card-img-top"
                                 alt="{{this.title}}"
-                                style="height: 22.5em;"
                             />
                         </a>
                         <div class="card-body bg-light">
@@ -403,10 +393,7 @@
                                     {{this.offer}}% off
                                 </p>
                             </div>
-                            <p
-                                class="card-text mt-1"
-                                style="margin-left: 1em;"
-                            >Price: ₹<span
+                            <p class="card-text mt-1">Price: ₹<span
                                     style="color: #896633;"
                                     class="text-decoration-underline"
                                 >{{this.price}}</span></p>
@@ -422,12 +409,13 @@
                                     >{{this.charge}}</span>
                                 </p>
                             </div>
-                            <a
+                            <button
                                 class="btn mt-1 m-auto w-100 mt-3"
                                 onclick="addtocart('{{this._id}}')"
                                 style="background-color: #896633; color: white; "
-                            ><i class="bi bi-cart4"></i></a>
-
+                            >
+                                <i class="bi bi-cart4"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -449,18 +437,17 @@
                 />
             </div>
             {{#each Gadgets}}
+                
                 <div class="col-md-4 col-12 mt-2 mb-5" style="z-index: 0; ">
-
                     <div class="card">
                         <a
                             href="/details/{{this._id}}"
                             class="text-decoration-none text-dark"
                         >
                             <img
-                                src="/product-images/{{this._id}}.jpg"
+                                src="{{this.image}}"
                                 class="card-img-top"
                                 alt="{{this.title}}"
-                                style="height: 22.5em;"
                             />
                         </a>
                         <div class="card-body bg-light">
@@ -477,10 +464,7 @@
                                     {{this.offer}}% off
                                 </p>
                             </div>
-                            <p
-                                class="card-text mt-1"
-                                style="margin-left: 1em;"
-                            >Price: ₹<span
+                            <p class="card-text mt-1">Price: ₹<span
                                     style="color: #896633;"
                                     class="text-decoration-underline"
                                 >{{this.price}}</span></p>
@@ -496,12 +480,13 @@
                                     >{{this.charge}}</span>
                                 </p>
                             </div>
-                            <a
+                            <button
                                 class="btn mt-1 m-auto w-100 mt-3"
                                 onclick="addtocart('{{this._id}}')"
                                 style="background-color: #896633; color: white; "
-                            ><i class="bi bi-cart4"></i></a>
-
+                            >
+                                <i class="bi bi-cart4"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -523,18 +508,17 @@
                 />
             </div>
             {{#each gadgetaccessories}}
+                
                 <div class="col-md-4 col-12 mt-2 mb-5" style="z-index: 0; ">
-
                     <div class="card">
                         <a
                             href="/details/{{this._id}}"
                             class="text-decoration-none text-dark"
                         >
                             <img
-                                src="/product-images/{{this._id}}.jpg"
+                                src="{{this.image}}"
                                 class="card-img-top"
                                 alt="{{this.title}}"
-                                style="height: 22.5em;"
                             />
                         </a>
                         <div class="card-body bg-light">
@@ -551,10 +535,7 @@
                                     {{this.offer}}% off
                                 </p>
                             </div>
-                            <p
-                                class="card-text mt-1"
-                                style="margin-left: 1em;"
-                            >Price: ₹<span
+                            <p class="card-text mt-1">Price: ₹<span
                                     style="color: #896633;"
                                     class="text-decoration-underline"
                                 >{{this.price}}</span></p>
@@ -570,12 +551,13 @@
                                     >{{this.charge}}</span>
                                 </p>
                             </div>
-                            <a
+                            <button
                                 class="btn mt-1 m-auto w-100 mt-3"
                                 onclick="addtocart('{{this._id}}')"
                                 style="background-color: #896633; color: white; "
-                            ><i class="bi bi-cart4"></i></a>
-
+                            >
+                                <i class="bi bi-cart4"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -597,18 +579,17 @@
                 />
             </div>
             {{#each Fashion}}
+                
                 <div class="col-md-4 col-12 mt-2 mb-5" style="z-index: 0; ">
-
                     <div class="card">
                         <a
                             href="/details/{{this._id}}"
                             class="text-decoration-none text-dark"
                         >
                             <img
-                                src="/product-images/{{this._id}}.jpg"
+                                src="{{this.image}}"
                                 class="card-img-top"
                                 alt="{{this.title}}"
-                                style="height: 22.5em;"
                             />
                         </a>
                         <div class="card-body bg-light">
@@ -625,10 +606,7 @@
                                     {{this.offer}}% off
                                 </p>
                             </div>
-                            <p
-                                class="card-text mt-1"
-                                style="margin-left: 1em;"
-                            >Price: ₹<span
+                            <p class="card-text mt-1">Price: ₹<span
                                     style="color: #896633;"
                                     class="text-decoration-underline"
                                 >{{this.price}}</span></p>
@@ -644,12 +622,13 @@
                                     >{{this.charge}}</span>
                                 </p>
                             </div>
-                            <a
+                            <button
                                 class="btn mt-1 m-auto w-100 mt-3"
                                 onclick="addtocart('{{this._id}}')"
                                 style="background-color: #896633; color: white; "
-                            ><i class="bi bi-cart4"></i></a>
-
+                            >
+                                <i class="bi bi-cart4"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -671,18 +650,17 @@
                 />
             </div>
             {{#each Electronics}}
+                
                 <div class="col-md-4 col-12 mt-2 mb-5" style="z-index: 0; ">
-
                     <div class="card">
                         <a
                             href="/details/{{this._id}}"
                             class="text-decoration-none text-dark"
                         >
                             <img
-                                src="/product-images/{{this._id}}.jpg"
+                                src="{{this.image}}"
                                 class="card-img-top"
                                 alt="{{this.title}}"
-                                style="height: 22.5em;"
                             />
                         </a>
                         <div class="card-body bg-light">
@@ -699,10 +677,7 @@
                                     {{this.offer}}% off
                                 </p>
                             </div>
-                            <p
-                                class="card-text mt-1"
-                                style="margin-left: 1em;"
-                            >Price: ₹<span
+                            <p class="card-text mt-1">Price: ₹<span
                                     style="color: #896633;"
                                     class="text-decoration-underline"
                                 >{{this.price}}</span></p>
@@ -718,12 +693,13 @@
                                     >{{this.charge}}</span>
                                 </p>
                             </div>
-                            <a
+                            <button
                                 class="btn mt-1 m-auto w-100 mt-3"
                                 onclick="addtocart('{{this._id}}')"
                                 style="background-color: #896633; color: white; "
-                            ><i class="bi bi-cart4"></i></a>
-
+                            >
+                                <i class="bi bi-cart4"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -746,18 +722,17 @@
                 />
             </div>
             {{#each Daily}}
+                
                 <div class="col-md-4 col-12 mt-2 mb-5" style="z-index: 0; ">
-
                     <div class="card">
                         <a
                             href="/details/{{this._id}}"
                             class="text-decoration-none text-dark"
                         >
                             <img
-                                src="/product-images/{{this._id}}.jpg"
+                                src="{{this.image}}"
                                 class="card-img-top"
                                 alt="{{this.title}}"
-                                style="height: 22.5em;"
                             />
                         </a>
                         <div class="card-body bg-light">
@@ -774,10 +749,7 @@
                                     {{this.offer}}% off
                                 </p>
                             </div>
-                            <p
-                                class="card-text mt-1"
-                                style="margin-left: 1em;"
-                            >Price: ₹<span
+                            <p class="card-text mt-1">Price: ₹<span
                                     style="color: #896633;"
                                     class="text-decoration-underline"
                                 >{{this.price}}</span></p>
@@ -793,12 +765,13 @@
                                     >{{this.charge}}</span>
                                 </p>
                             </div>
-                            <a
+                            <button
                                 class="btn mt-1 m-auto w-100 mt-3"
                                 onclick="addtocart('{{this._id}}')"
                                 style="background-color: #896633; color: white; "
-                            ><i class="bi bi-cart4"></i></a>
-
+                            >
+                                <i class="bi bi-cart4"></i>
+                            </button>
                         </div>
                     </div>
                 </div>

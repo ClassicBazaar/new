@@ -148,17 +148,3 @@
         </div>
     </div>
 </section>
-<script>
-    let imagefile=document.getElementById('productimage')
-    let hideinput=document.getElementById('hideinput')
-
-    imagefile.addEventListener('change',(e)=>{
-        const file=imagefile.files[0]
-        const reader= new FileReader()
-        reader.addEventListener('load',()=>{
-            hideinput.value=reader.result
-        })
-        reader.readAsDataURL(file)
-    })
-    
-</script>

@@ -70,23 +70,15 @@ router.get("/delete-product/:id", verifyadminlogin, (req, res) => {
     });
 });
 router.get("/edit-product/:id", verifyadminlogin, async (req, res) => {
-    console.log("haiu");
     let product = await producthelper.getproduct(req.params.id);
-    console.log(product);
     res.render("admin/edit-product", { product });
 });
 router.post("/edit-product/:id", verifyadminlogin, (req, res) => {
     req.body.price = parseInt(req.body.price);
     let id = req.params.id;
-    let image = req.files.image;
+    // console.log(req.body);
     producthelper.updateproduct(req.params.id, req.body).then(() => {
-        res.redirect("/admin");
-        if (req.files.image) {
-            console.log("hai");
-            image.mv("./public/product-images/" + id + ".jpg");
-        } else {
-            console.log("error");
-        }
+        res.redirect('/admin')
     });
 });
 router.get("/allorders", verifyadminlogin, async (req, res) => {

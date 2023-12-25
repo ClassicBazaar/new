@@ -5,16 +5,16 @@ const ObjectId = require("mongodb").ObjectId;
 const bcrypt = require("bcryptjs");
 module.exports = {
     addproduct: (product) => {
-        return new Promise((resolve,reject)=>{
+        return new Promise((resolve, reject) => {
             product.size = product.size.split(",");
-        console.log(product);
-        db.get()
-            .collection("products")
-            .insertOne(product)
-            .then((data) => {
-               resolve(data)
-            });
-        })
+            console.log(product);
+            db.get()
+                .collection("products")
+                .insertOne(product)
+                .then((data) => {
+                    resolve(data);
+                });
+        });
     },
     getallproducts: (category) => {
         return new Promise(async (resolve, reject) => {
@@ -58,7 +58,28 @@ module.exports = {
     updateproduct: (id, product) => {
         product.size = product.size.split(",");
         return new Promise((resolve, reject) => {
-            db.get()
+            if(product.image){
+                db.get()
+                .collection(collections.PRODUCT_COLLECTION)
+                .updateOne(
+                    { _id: new ObjectId(id) },
+                    {
+                        $set: {
+                            name: product.name,
+                            price: product.price,
+                            category: product.category,
+                            offer: product.offer,
+                            charge: product.charge,
+                            size: product.size,
+                            image: product.image,
+                        },
+                    }
+                )
+                .then((response) => {
+                    resolve(response);
+                });
+            }else{
+                db.get()
                 .collection(collections.PRODUCT_COLLECTION)
                 .updateOne(
                     { _id: new ObjectId(id) },
@@ -76,6 +97,7 @@ module.exports = {
                 .then((response) => {
                     resolve(response);
                 });
+            }
         });
     },
     getallorder: () => {
