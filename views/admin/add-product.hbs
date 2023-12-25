@@ -16,9 +16,10 @@
             </div>
             {{! form }}
             <form
-                enctype="multipart/form-data"
+                enctype="multipart/form-data" 
                 action="/admin/add-product"
                 method="post"
+                id="addproduct"
                 class="col-6 m-auto"
             >
                 {{! name of product }}
@@ -47,13 +48,27 @@
                 </div>
                 {{! size}}
                 <div class="col-12 mt-3 form-floating">
-                    <select name="size" id="floatingInput" class="form-select" required >
+                    <select
+                        name="size"
+                        id="floatingInput"
+                        class="form-select"
+                        required
+                    >
                         <option value="">none</option>
-                        <option value="freesize" >Free size</option>
-                        <option value="s,m,l,xl,xxl,xxxl,4xl,5xl">S/M/L/XL/XXL/XXXL/4XL/5XL</option>
-                        <option value="0-3 months,3-6 months,6-12 months">0-3 months,3-6 months,6-12 months</option>
-                        <option value="1-2 years,2-3 years,3-4 years,4-5 years,5-6 years,6-7 years,7-8 years,8-9 years,9-10 years,10-11 years,11-12 years,12-13 years">1-2 years,2-3 years,3-4 years,4-5 years,5-6 years,6-7 years,7-8 years,8-9 years,9-10 years,10-11 years,11-12 years,12-13 years</option>
-                        <option value="4,5,6,7,8,9,10,11,12">4,5,6,7,8,9,10,11,12</option>
+                        <option value="freesize">Free size</option>
+                        <option
+                            value="s,m,l,xl,xxl,xxxl,4xl,5xl"
+                        >S/M/L/XL/XXL/XXXL/4XL/5XL</option>
+                        <option value="0-3 months,3-6 months,6-12 months">0-3
+                            months,3-6 months,6-12 months</option>
+                        <option
+                            value="1-2 years,2-3 years,3-4 years,4-5 years,5-6 years,6-7 years,7-8 years,8-9 years,9-10 years,10-11 years,11-12 years,12-13 years"
+                        >1-2 years,2-3 years,3-4 years,4-5 years,5-6 years,6-7
+                            years,7-8 years,8-9 years,9-10 years,10-11
+                            years,11-12 years,12-13 years</option>
+                        <option
+                            value="4,5,6,7,8,9,10,11,12"
+                        >4,5,6,7,8,9,10,11,12</option>
                     </select>
                     <label for="floatingInput">Size</label>
                 </div>
@@ -108,6 +123,7 @@
                 <div class="col-12 mt-3">
                     <div class="input-group">
                         <input
+                            id="productimage"
                             name="image"
                             type="file"
                             class="form-control"
@@ -116,6 +132,8 @@
                         />
                     </div>
                 </div>
+                {{!-- hiddedinput --}}
+                <input type="text" hidden value="" name="image" id="hideinput">
                 {{! submit button }}
                 <div class="col-12 mt-3">
                     <input
@@ -130,3 +148,17 @@
         </div>
     </div>
 </section>
+<script>
+    let imagefile=document.getElementById('productimage')
+    let hideinput=document.getElementById('hideinput')
+
+    imagefile.addEventListener('change',(e)=>{
+        const file=imagefile.files[0]
+        const reader= new FileReader()
+        reader.addEventListener('load',()=>{
+            hideinput.value=reader.result
+        })
+        reader.readAsDataURL(file)
+    })
+    
+</script>

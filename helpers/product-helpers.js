@@ -4,15 +4,17 @@ const { response } = require("express");
 const ObjectId = require("mongodb").ObjectId;
 const bcrypt = require("bcryptjs");
 module.exports = {
-    addproduct: (product, callback) => {
-        product.size = product.size.split(",");
+    addproduct: (product) => {
+        return new Promise((resolve,reject)=>{
+            product.size = product.size.split(",");
         console.log(product);
         db.get()
             .collection("products")
             .insertOne(product)
             .then((data) => {
-                callback(data.insertedId);
+               resolve(data)
             });
+        })
     },
     getallproducts: (category) => {
         return new Promise(async (resolve, reject) => {
