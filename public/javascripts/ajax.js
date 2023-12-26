@@ -7,6 +7,10 @@ function addtocart(id) {
                 let count = $("#cartcount").html();
                 count = parseInt(count) + 1;
                 $("#cartcount").html(count);
+
+                let bnavcount = $("#bnavcount").html();
+                bnavcount = parseInt(bnavcount) + 1;
+                $("#bnavcount").html(bnavcount);
                 alert("Item added to cart");
             } else {
                 alert("You have to login first to add this product to cart");

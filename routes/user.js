@@ -206,8 +206,9 @@ router.get("/order-placed-successfully", verifylogin, (req, res) => {
     res.render("user/ordersuccess", { user: req.session.user });
 });
 router.get("/orders", verifylogin, async (req, res) => {
+    let cartcount = await userhelpers.getcartcount(req.session.user._id);
     let orderlist = await userhelpers.getorderitems(req.session.user._id);
-    res.render("user/orderlist", { user: req.session.user, orderlist });
+    res.render("user/orderlist", { user: req.session.user, orderlist ,cartcount});
 });
 router.get(
     "/order-product-details/:orderid/:userid",
