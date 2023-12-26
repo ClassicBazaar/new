@@ -38,7 +38,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/cart">cart
                             <sup>
-                                <span class="badge bg-success " id="cartcount">{{cartcount}}</span>
+                                <span
+                                    class="badge bg-success"
+                                    id="cartcount"
+                                >{{cartcount}}</span>
                             </sup>
                         </a>
                     </li>
@@ -59,7 +62,7 @@
                 {{! sign up dropdown button }}
                 <div class="dropdown">
                     <button
-                        class="btn btn-success dropdown-toggle"
+                        class="btn btn-success dropdown-toggle-split"
                         type="button"
                         id="dropdownMenuButton1"
                         data-bs-toggle="dropdown"
@@ -92,3 +95,103 @@
         </div>
     </nav>
 </header>
+<nav
+    id="bottom-nav"
+    style="position: fixed; bottom: 0;height: 7vh;z-index: 999;"
+    class="w-100"
+>
+    <div class="icons h-100 w-100">
+        <div class="home-icon">
+            <a href="/">
+                <i class="btn bi-house-fill"></i>
+            </a>
+        </div>
+        <div class="product-icon">
+            <a href="/products">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="16"
+                    width="20"
+                    viewBox="0 0 640 512"
+                >
+                    <path
+                        d="M211.8 0c7.8 0 14.3 5.7 16.7 13.2C240.8 51.9 277.1 80 320 80s79.2-28.1 91.5-66.8C413.9 5.7 420.4 0 428.2 0h12.6c22.5 0 44.2 7.9 61.5 22.3L628.5 127.4c6.6 5.5 10.7 13.5 11.4 22.1s-2.1 17.1-7.8 23.6l-56 64c-11.4 13.1-31.2 14.6-44.6 3.5L480 197.7V448c0 35.3-28.7 64-64 64H224c-35.3 0-64-28.7-64-64V197.7l-51.5 42.9c-13.3 11.1-33.1 9.6-44.6-3.5l-56-64c-5.7-6.5-8.5-15-7.8-23.6s4.8-16.6 11.4-22.1L137.7 22.3C155 7.9 176.7 0 199.2 0h12.6z"
+                    />
+                </svg>
+            </a>
+        </div>
+        {{#if user}}
+            <div class="order-icon">
+                <a href="/orders">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="16"
+                        width="14"
+                        viewBox="0 0 448 512"
+                    >
+                        <path
+                            d="M50.7 58.5L0 160H208V32H93.7C75.5 32 58.9 42.3 50.7 58.5zM240 160H448L397.3 58.5C389.1 42.3 372.5 32 354.3 32H240V160zm208 32H0V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192z"
+                        />
+                    </svg>
+                </a>
+            </div>
+        {{/if}}
+        <div class="profile-icon">
+            <div class="dropdown">
+                <button
+                    class="btn dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="16"
+                        width="14"
+                        viewBox="0 0 448 512"
+                    ><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path
+                            d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"
+                        /></svg>
+                </button>
+                <ul
+                    class="dropdown-menu bg-dark"
+                    aria-labelledby="dropdownMenuButton1"
+                >
+                    {{#if user}}
+                        <li>
+                            <p class="dropdown-item text-white" href="/logout">
+                                {{user.name}}
+                            </p>
+                        </li>
+                    {{/if}}
+                    {{#if user}}
+                        <li>
+                            <a
+                                class="dropdown-item text-danger text-white"
+                                href="/logout"
+                            >
+                                <span class="text-danger">Logout</span>
+                            </a>
+                        </li>
+                    {{else}}
+                        <li><a
+                                class="dropdown-item text-white"
+                                href="/login"
+                            >Login</a></li>
+                    {{/if}}
+                </ul>
+            </div>
+
+            {{!  }}
+            {{! <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="16"
+                width="14"
+                viewBox="0 0 448 512"
+            ><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path
+                    d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"
+                /></svg> }}
+        </div>
+    </div>
+</nav>

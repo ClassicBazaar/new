@@ -4,16 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {{#if icon}}
-    <link rel="shortcut icon" href="{{icon}}" type="image/x-icon">
+    <link rel="icon" href="{{icon}}" type="image/x-icon">
     {{else}}
     <link rel="icon" href="/images/home/logo.JPG" class="rounded-circle" type="image/x-icon" />
     {{/if}}
-    
+
     {{#if name}}
     <title>{{name}}</title>
     {{else}}
     <title>Classic bazaar</title>
     {{/if}}
+    <link rel="stylesheet" href="/stylesheets/b-nav.css">
     <script src="/javascripts/bootstrap js/jquery.js"></script>
     <script src="/javascripts/bootstrap js/popper/popper.js"></script>
     <link rel="stylesheet" href="/stylesheets/style.css" />
@@ -23,18 +24,18 @@
 
 <body>
     <div class=" h-100 " id="loading">
-        
+
     </div>
     {{#if admin}}
-    {{>admin-header}}
+        {{>admin-header}}
     {{else}}
-    {{>user-header}}
+        {{>user-header}}
     {{/if}}
 
     {{{body}}}
-</body>
 {{! importing boot strap }}
 <script src="/javascripts/bootstrap js/bootstrap.js"></script>
 <script src="/javascripts/ajax.js"></script>
 <script src="/javascripts/common.js"></script>
+
 </html>
