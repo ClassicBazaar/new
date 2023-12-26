@@ -229,8 +229,9 @@ router.get('/details/:productid',async(req,res)=>{
     
     let productid=req.params.productid
     let product=await producthelper.getproduct(productid)
-    let icon=productid
-    res.render('user/product-details',{product,icon})
+    let icon=product.image
+    let name=product.name
+    res.render('user/product-details',{product,icon,name})
 })
 router.post('/changesize',(req,res)=>{
     let productid=req.body.productid

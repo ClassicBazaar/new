@@ -4,11 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {{#if icon}}
-    <link rel="icon" href="/product-images/{{icon}}.jpg" class="rounded-circle" type="image/x-icon" />
+    <link rel="icon" href="{{icon}}" class="rounded-circle" type="image/x-icon" />
     {{else}}
     <link rel="icon" href="/images/home/logo.JPG" class="rounded-circle" type="image/x-icon" />
     {{/if}}
+    
+    {{#if name}}
+    <title>{{name}}</title>
+    {{else}}
     <title>Classic bazaar</title>
+    {{/if}}
     <script src="/javascripts/bootstrap js/jquery.js"></script>
     <script src="/javascripts/bootstrap js/popper/popper.js"></script>
     <link rel="stylesheet" href="/stylesheets/style.css" />
