@@ -1,0 +1,36 @@
+
+.profile-icon:focus {
+    background-color: green;
+}
+@media (max-width: 991px) {
+    #bottom-nav {
+        background-color: rgb(173, 255, 184);
+        /* background-color: rgb(176, 226, 183); */
+        border-top-right-radius: 1em;
+        border-top-left-radius: 1em;
+    }
+    .icons {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+    #top-nav {
+        display: none !important;
+
+    }
+}
+@media (min-width: 992px) and (max-width: 3840px) {
+    #bottom-nav {
+        display: none !important;
+    }
+    #bnavlogo {
+        display: none !important;
+    }
+}
+@media (min-width: 425px) and (max-width: 992px) {
+    .icons {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+}
