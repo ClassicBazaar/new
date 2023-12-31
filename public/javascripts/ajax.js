@@ -71,7 +71,19 @@ $("#order-form").submit((e) => {
         data: $("#order-form").serialize(),
         success: (response) => {
             alert(response);
-            location.href = "/order-placed-successfully";
+            if (response) {
+                $.ajax({
+                    url: "https://script.google.com/macros/s/AKfycbxFdOY1StTMepMlz6Jzvsqyr-K67HjpTW9LawGFl2p96NhZYYp8pr-Jqn1dg2edFKxy/exec",
+                    method: "post",
+                    data: {
+                        message: "new order placed in classicbazaar check now https://classicbazaar.onrender.com/admin/allorders",
+                        
+                    },
+                    success: () => {
+                        location.href = "/order-placed-successfully";
+                    },
+                });
+            }
         },
     });
 });
