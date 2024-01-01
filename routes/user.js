@@ -231,6 +231,7 @@ router.get('/details/:productid',async(req,res)=>{
     let productid=req.params.productid
     let product=await producthelper.getproduct(productid)
     let icon=product.image
+    console.log(icon)
     let name=product.name
     res.render('user/product-details',{product,icon,name})
 })
