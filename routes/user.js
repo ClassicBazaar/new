@@ -245,7 +245,7 @@ router.get("/details/:productid", async (req, res) => {
             console.log("File created");
         }
     );
-    let icon="/product/" + product._id + ".ico"
+    let icon=product._id
     let name = product.name;
     res.render("user/product-details", { product, icon, name });
 });
