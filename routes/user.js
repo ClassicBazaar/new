@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var producthelper = require("../helpers/product-helpers");
 var userhelpers = require("../helpers/user-helpers");
+var fs = require("fs");
 
 const verifylogin = (req, res, next) => {
     if (req.session.loggedin) {
@@ -208,7 +209,11 @@ router.get("/order-placed-successfully", verifylogin, (req, res) => {
 router.get("/orders", verifylogin, async (req, res) => {
     let cartcount = await userhelpers.getcartcount(req.session.user._id);
     let orderlist = await userhelpers.getorderitems(req.session.user._id);
-    res.render("user/orderlist", { user: req.session.user, orderlist ,cartcount});
+    res.render("user/orderlist", {
+        user: req.session.user,
+        orderlist,
+        cartcount,
+    });
 });
 router.get(
     "/order-product-details/:orderid/:userid",
@@ -226,21 +231,30 @@ router.get(
         }
     }
 );
-router.get('/details/:productid',async(req,res)=>{
-    
-    let productid=req.params.productid
-    let product=await producthelper.getproduct(productid)
-    let icon=product.image
-    console.log(icon)
-    let name=product.name
-    res.render('user/product-details',{product,icon,name})
-})
-router.post('/changesize',(req,res)=>{
-    let productid=req.body.productid
-    let cartid=req.body.cartid
-    let selectedsize=req.body.size
-    userhelpers.changesize(selectedsize,cartid,productid).then((response)=>{
-        res.json(response)
-    })
-})
+router.get("/details/:productid", async (req, res) => {
+    let productid = req.params.productid;
+    let product = await producthelper.getproduct(productid);
+    let base64 = product.image;
+    let base64Image = base64.split(";base64,").pop();
+
+    fs.writeFile(
+        "public/product/" + product._id + ".ico",
+        base64Image,
+        { encoding: "base64" },
+        function (err) {
+            console.log("File created");
+        }
+    );
+    let icon="/product/" + product._id + ".ico"
+    let name = product.name;
+    res.render("user/product-details", { product, icon, name });
+});
+router.post("/changesize", (req, res) => {
+    let productid = req.body.productid;
+    let cartid = req.body.cartid;
+    let selectedsize = req.body.size;
+    userhelpers.changesize(selectedsize, cartid, productid).then((response) => {
+        res.json(response);
+    });
+});
 module.exports = router;
