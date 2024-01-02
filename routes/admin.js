@@ -51,14 +51,15 @@ router.get("/", verifyadminlogin, (req, res, next) => {
     });
 });
 
-router.get("/add-product", verifyadminlogin, (req, res) => {
-    res.render("admin/add-product", { admin: true });
+router.get("/add-product", verifyadminlogin, async(req, res) => {
+    let category=await producthelper.getcategoriesforproductpage()
+    res.render("admin/add-product", { admin: true ,category});
 });
 router.post("/add-product", verifyadminlogin, async (req, res) => {
     console.log(req.body);
     req.body.price = parseInt(req.body.price);
-    producthelper.addproduct(req.body).then((response)=>{
-        res.redirect('/admin')
+    producthelper.addproduct(req.body).then((response) => {
+        res.redirect("/admin");
     });
 });
 router.get("/delete-product/:id", verifyadminlogin, (req, res) => {
@@ -71,14 +72,15 @@ router.get("/delete-product/:id", verifyadminlogin, (req, res) => {
 });
 router.get("/edit-product/:id", verifyadminlogin, async (req, res) => {
     let product = await producthelper.getproduct(req.params.id);
-    res.render("admin/edit-product", { product });
+    let category=await producthelper.getcategoriesforproductpage()
+    res.render("admin/edit-product", { product,category });
 });
 router.post("/edit-product/:id", verifyadminlogin, (req, res) => {
     req.body.price = parseInt(req.body.price);
     let id = req.params.id;
     // console.log(req.body);
     producthelper.updateproduct(req.params.id, req.body).then(() => {
-        res.redirect('/admin')
+        res.redirect("/admin");
     });
 });
 router.get("/allorders", verifyadminlogin, async (req, res) => {
@@ -114,6 +116,14 @@ router.get("/delete-order/:id", verifyadminlogin, (req, res) => {
         if (response.status) {
             res.redirect("/admin/allorders");
         }
+    });
+});
+router.get("/add-categories",verifyadminlogin, (req, res) => {
+    res.render("admin/categories");
+});
+router.post("/add-categories", verifyadminlogin, (req, res) => {
+    producthelper.addcategories(req.body).then((response) => {
+        res.redirect("/admin");
     });
 });
 module.exports = router;

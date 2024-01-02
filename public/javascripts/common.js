@@ -20,3 +20,4 @@ function viewimage(event) {
         event.target.files[0]
     );
 }
+

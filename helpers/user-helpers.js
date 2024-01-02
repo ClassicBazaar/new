@@ -429,7 +429,7 @@ module.exports = {
                             user: "$user",
                             item: "$product.item",
                             quantity: "$product.quantity",
-                            size:'$product.size',
+                            size: "$product.size",
                             date: "$date",
                             month: "$month",
                             year: "$year",
@@ -451,7 +451,7 @@ module.exports = {
                             user: 1,
                             item: 1,
                             quantity: 1,
-                            size:1,
+                            size: 1,
                             status: 1,
                             address: 1,
                             product: { $arrayElemAt: ["$product", 0] },
@@ -482,6 +482,32 @@ module.exports = {
                 )
                 .then((response) => {
                     resolve(selectedsize);
+                });
+        });
+    },
+    getcategoriesforproductpage: () => {
+        return new Promise(async (resolve, reject) => {
+            let category = await db
+                .get()
+                .collection(collections.CATEGORY_COLLECTION)
+                .aggregate([
+                    {
+                        $project: {
+                            category: "$category.name",
+                        },
+                    },
+                ])
+                .toArray();
+            resolve(category[0].category);
+        });
+    },
+    getcategoryforscroller: () => {
+        return new Promise((resolve, reject) => {
+            db.get()
+                .collection(collections.CATEGORY_COLLECTION)
+                .findOne()
+                .then((response) => {
+                    resolve(response.category);
                 });
         });
     },

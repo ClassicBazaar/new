@@ -211,9 +211,10 @@ body::-webkit-scrollbar {
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: 26%;
-    overflow: hidden ;
+    /* overflow: hidden ; */
+    overflow: scroll;
 }
-.scroller>a {
+/* .scroller>a {
     animation: infinite;
     animation-name: scrolling;
     animation-timing-function: linear;
@@ -221,13 +222,13 @@ body::-webkit-scrollbar {
     animation-direction: alternate-reverse;
     animation-play-state: running;
     overflow: visible;
-}
-.scroller:hover  {
+} */
+/* .scroller:hover  {
    &>a{
     animation-play-state: paused;
    }
-}
-@keyframes scrolling {
+} */
+/* @keyframes scrolling {
     0% {
         transform: translateX(10%);
     }
@@ -235,6 +236,6 @@ body::-webkit-scrollbar {
         transform: translateX(-500%);
     }
     100% {
-        transform: translateX(0%);
+        transform: translateX(-10%);
     }
-}
+} */

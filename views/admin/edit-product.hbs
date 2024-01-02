@@ -83,17 +83,10 @@
                             value="{{product.category}}"
                             selected
                         >{{product.category}}</option>
-                        <option value="featured products">Featured products</option>
-                        <option value="Mens">Mens</option>
-                        <option value="Kids">kids</option>
-                        <option value="Bags">Bags</option>
-                        <option value="Footwears">Footwears</option>
-                        <option value="Gadgets">Gadgets</option>
-                        <option value="Fashion accessories">Fashion accessories</option>
-                        <option value="Gadget accessories">Gadget accessories</option>
-                        <option value="Electronics">Electronics</option>
-                        <option value="daily using products">daily using
-                            products</option>
+                        {{#each category}}
+                        <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+
                     </select>
                     <label for="floatingInput">Category</label>
                 </div>

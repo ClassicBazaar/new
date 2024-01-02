@@ -58,45 +58,45 @@ module.exports = {
     updateproduct: (id, product) => {
         product.size = product.size.split(",");
         return new Promise((resolve, reject) => {
-            if(product.image){
+            if (product.image) {
                 db.get()
-                .collection(collections.PRODUCT_COLLECTION)
-                .updateOne(
-                    { _id: new ObjectId(id) },
-                    {
-                        $set: {
-                            name: product.name,
-                            price: product.price,
-                            category: product.category,
-                            offer: product.offer,
-                            charge: product.charge,
-                            size: product.size,
-                            image: product.image,
-                        },
-                    }
-                )
-                .then((response) => {
-                    resolve(response);
-                });
-            }else{
+                    .collection(collections.PRODUCT_COLLECTION)
+                    .updateOne(
+                        { _id: new ObjectId(id) },
+                        {
+                            $set: {
+                                name: product.name,
+                                price: product.price,
+                                category: product.category,
+                                offer: product.offer,
+                                charge: product.charge,
+                                size: product.size,
+                                image: product.image,
+                            },
+                        }
+                    )
+                    .then((response) => {
+                        resolve(response);
+                    });
+            } else {
                 db.get()
-                .collection(collections.PRODUCT_COLLECTION)
-                .updateOne(
-                    { _id: new ObjectId(id) },
-                    {
-                        $set: {
-                            name: product.name,
-                            price: product.price,
-                            category: product.category,
-                            offer: product.offer,
-                            charge: product.charge,
-                            size: product.size,
-                        },
-                    }
-                )
-                .then((response) => {
-                    resolve(response);
-                });
+                    .collection(collections.PRODUCT_COLLECTION)
+                    .updateOne(
+                        { _id: new ObjectId(id) },
+                        {
+                            $set: {
+                                name: product.name,
+                                price: product.price,
+                                category: product.category,
+                                offer: product.offer,
+                                charge: product.charge,
+                                size: product.size,
+                            },
+                        }
+                    )
+                    .then((response) => {
+                        resolve(response);
+                    });
             }
         });
     },
@@ -279,6 +279,52 @@ module.exports = {
                 console.log("admin login failed");
                 resolve({ Status: false });
             }
+        });
+    },
+    addcategories: (data) => {
+        return new Promise(async (resolve, reject) => {
+            let collection = await db
+                .get()
+                .collection(collections.CATEGORY_COLLECTION)
+                .findOne();
+
+            let Object = {
+                category: [data],
+            };
+            if (collection) {
+                db.get()
+                    .collection(collections.CATEGORY_COLLECTION)
+                    .updateOne(
+                        { _id: new ObjectId(collection._id) },
+                        {
+                            $push: { category: data },
+                        }
+                    )
+                    .then((response) => {
+                        resolve(response);
+                    });
+            } else {
+                db.get()
+                    .collection(collections.CATEGORY_COLLECTION)
+                    .insertOne(Object)
+                    .then((response) => [resolve(response)]);
+            }
+        });
+    },
+    getcategoriesforproductpage: () => {
+        return new Promise(async (resolve, reject) => {
+            let category = await db
+                .get()
+                .collection(collections.CATEGORY_COLLECTION)
+                .aggregate([
+                    {
+                        $project: {
+                            category: "$category.name",
+                        },
+                    },
+                ])
+                .toArray();
+            resolve(category[0].category);
         });
     },
 };

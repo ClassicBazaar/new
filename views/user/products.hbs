@@ -4,781 +4,112 @@
     class=""
     style="  padding-top: 5em; background-color: #16373a;"
 >
-    <h1 class="text-white  text-center"> Products</h1>
+    <h1 class="text-white text-center"> Products</h1>
     <hr
         class="text-white mb-5"
         style="width: 50%; margin-left: auto ; margin-right: auto; margin-top: 0px;"
     />
     <div class="scroller mt-2 pb-5">
+        {{#each scroller}}
+            <a href="#{{this.name}}" class="text-decoration-none">
+                <div
+                    class="card hover"
+                    style="border-radius: 1em; background-color: #f6f6f6;"
+                >
+                    <img
+                        src="{{this.image}}"
+                        alt=""
+                        class="image rounded-circle"
+                    />
 
-        <a href="#mens" class="text-decoration-none">
-            <div
-                class="card hover"
-                style="border-radius: 1em; background-color: #f6f6f6;"
-            >
-                <img
-                    src="/images/product/section/men.jpg"
-                    alt=""
-                    class="image rounded-circle"
-                />
-
-                <h6 class="text-center text-dark text">Mens</h6>
-            </div>
-        </a>
-        <a href="#kids" class="text-decoration-none">
-            <div
-                class="card hover"
-                style="border-radius: 1em; background-color: #f6f6f6;"
-            >
-                <img
-                    src="/images/product/section/kid.jpg"
-                    alt=""
-                    class="image rounded-circle"
-                />
-
-                <h6 class="text-center text-dark text">Kids</h6>
-            </div>
-        </a>
-        <a href="#bags" class="text-decoration-none">
-            <div
-                class="card hover"
-                style="border-radius: 1em; background-color: #f6f6f6;"
-            >
-                <img
-                    src="/images/product/section/bags.jpg"
-                    alt=""
-                    class="image rounded-circle"
-                />
-
-                <h6 class="text-center text-dark text">Bags</h6>
-            </div>
-        </a>
-        <a href="#footwears" class="text-decoration-none">
-            <div
-                class="card hover"
-                style="border-radius: 1em; background-color: #f6f6f6;"
-            >
-                <img
-                    src="/images/product/section/footwears.jpg"
-                    alt=""
-                    class="image rounded-circle"
-                />
-
-                <h6 class="text-center text-dark text">Footwears</h6>
-            </div>
-        </a>
-        <a href="#gadgets" class="text-decoration-none">
-            <div
-                class="card hover"
-                style="border-radius: 1em;background-color: #f6f6f6;"
-            >
-                <img
-                    src="/images/product/section/gadget.jpg"
-                    alt=""
-                    class="image rounded-circle"
-                />
-
-                <h6 class="text-center text-dark text">Gadgets</h6>
-            </div>
-        </a>
-        <a href="#gadget-a" class="text-decoration-none">
-            <div
-                class="card hover"
-                style="border-radius: 1em; background-color: #f6f6f6;"
-            >
-                <img
-                    src="/images/product/section/accessories.jpg"
-                    alt=""
-                    class="image rounded-circle"
-                />
-
-                <h6 class="text-center text-dark text">Accessorie</h6>
-            </div>
-        </a>
-        <a href="#fashion" class="text-decoration-none">
-            <div
-                class="card hover"
-                style="border-radius: 1em;background-color: #f6f6f6;"
-            >
-                <img
-                    src="/images/product/section/fashion.jpg"
-                    alt=""
-                    class="image rounded-circle"
-                />
-
-                <h6 class="text-center text-dark text">Fashion</h6>
-            </div>
-        </a>
-        <a href="#electronics" class="text-decoration-none">
-            <div
-                class="card hover"
-                style="border-radius: 1em;background-color: #f6f6f6;"
-            >
-                <img
-                    src="/images/product/section/electronics.jpg"
-                    alt=""
-                    class="image rounded-circle"
-                />
-
-                <h6 class="text-center text-dark text">Electronic</h6>
-            </div>
-        </a>
-        <a href="#daily" class="text-decoration-none">
-            <div
-                class="card hover"
-                style="border-radius: 1em;background-color: #f6f6f6;"
-            >
-                <img
-                    src="/images/product/section/daily.jpg"
-                    alt=""
-                    class="image rounded-circle"
-                />
-
-                <h6 class="text-center text-dark text">daily </h6>
-            </div>
-        </a>
+                    <h6 class="text-center text-dark text">{{this.name}}</h6>
+                </div>
+            </a>
+        {{/each}}
     </div>
 </section>
 {{! mens products }}
-<section class="bg-dark" id="mens">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 mt-5">
-                <h1 class="text-center text-light mt-3 mb-3">Mens</h1>
-            </div>
-            <div class="col-12">
-                <hr
-                    class="text-light mb-5"
-                    style="width: 50%; margin-left: auto ; margin-right: auto; margin-top: 0px;"
-                />
-            </div>
-            {{#each Mens}}
-                
-                <div class="col-md-4 col-12 mt-2 mb-5" style="z-index: 0; ">
-                    <div class="card">
-                        <a
-                            href="/details/{{this._id}}"
-                            class="text-decoration-none text-dark"
-                        >
-                            <img
-                                src="{{this.image}}"
-                                class="card-img-top"
-                                alt="{{this.title}}"
-                            />
-                        </a>
-                        <div class="card-body bg-light">
 
-                            <h5 class="card-title">{{this.name}}</h5>
-                            <hr />
-                            <div
-                                style="background-color: rgb(147, 234, 181);; border-radius: 1em;"
+{{#each result}}
+    {{#if even}}
+            <section class="bg-dark" id="{{this.name}}">
+    {{else}}
+            <section class="bg-success " id="{{this.name}}">
+    {{/if}}
+    {{!-- <section class="bg-success" id="{{this.name}}"> --}}
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mt-5">
+                    <h1
+                        class="text-center text-light mt-3 mb-3"
+                    >{{this.name}}</h1>
+                </div>
+                <div class="col-12">
+                    <hr
+                        class="text-light mb-5"
+                        style="width: 50%; margin-left: auto ; margin-right: auto; margin-top: 0px;"
+                    />
+                </div>
+
+                {{#each this.product}}
+                    <div class="col-md-4 col-12 mt-2 mb-5" style="z-index: 0; ">
+                        <div class="card">
+                            <a
+                                href="/details/{{this._id}}"
+                                class="text-decoration-none text-dark"
                             >
-                                <p
-                                    class="card-text text-decoration-underline"
-                                    style="color: darkgreen; margin-left: 1em;  "
+                                <img
+                                    src="{{this.image}}"
+                                    class="card-img-top"
+                                    alt="{{this.title}}"
+                                />
+                            </a>
+                            <div class="card-body bg-light">
+
+                                <h5 class="card-title">{{this.name}}</h5>
+                                <hr />
+                                <div
+                                    style="background-color: rgb(147, 234, 181);; border-radius: 1em;"
                                 >
-                                    {{this.offer}}% off
-                                </p>
+                                    <p
+                                        class="card-text text-decoration-underline"
+                                        style="color: darkgreen; margin-left: 1em;  "
+                                    >
+                                        {{this.offer}}% off
+                                    </p>
+                                </div>
+                                <p class="card-text mt-1">Price: ₹<span
+                                        style="color: #896633;"
+                                        class="text-decoration-underline"
+                                    >{{this.price}}</span></p>
+                                <div
+                                    style="background-color: rgb(180, 180, 180); border-radius: 1em; margin-top: -0.5em;"
+                                >
+                                    <p
+                                        class="card-text"
+                                        style="margin-left: 1em;"
+                                    ><span class="text-dark">Delivery Charge</span>:
+                                        <span
+                                            class="text-success"
+                                        >{{this.charge}}</span>
+                                    </p>
+                                </div>
+                                <button
+                                    class="btn mt-1 m-auto w-100 mt-3"
+                                    onclick="addtocart('{{this._id}}')"
+                                    style="background-color: #896633; color: white; "
+                                >
+                                    <i class="bi bi-cart4"></i>
+                                </button>
                             </div>
-                            <p class="card-text mt-1">Price: ₹<span
-                                    style="color: #896633;"
-                                    class="text-decoration-underline"
-                                >{{this.price}}</span></p>
-                            <div
-                                style="background-color: rgb(180, 180, 180); border-radius: 1em; margin-top: -0.5em;"
-                            >
-                                <p
-                                    class="card-text"
-                                    style="margin-left: 1em;"
-                                ><span class="text-dark">Delivery Charge</span>:
-                                    <span
-                                        class="text-success"
-                                    >{{this.charge}}</span>
-                                </p>
-                            </div>
-                            <button
-                                class="btn mt-1 m-auto w-100 mt-3"
-                                onclick="addtocart('{{this._id}}')"
-                                style="background-color: #896633; color: white; "
-                            >
-                                <i class="bi bi-cart4"></i>
-                            </button>
                         </div>
                     </div>
-                </div>
-            {{/each}}
-        </div>
-    </div>
-</section>
-{{! kids products }}
-<section class="bg-success" id="kids">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="text-center text-light mt-3 mb-3">Kids</h1>
-            </div>
-            <div class="col-12">
-                <hr
-                    class="text-light mb-5"
-                    style="width: 50%; margin-left: auto ; margin-right: auto; margin-top: 0px;"
-                />
-            </div>
-            {{#each Kids}}
-                
-                <div class="col-md-4 col-12 mt-2 mb-5" style="z-index: 0; ">
-                    <div class="card">
-                        <a
-                            href="/details/{{this._id}}"
-                            class="text-decoration-none text-dark"
-                        >
-                            <img
-                                src="{{this.image}}"
-                                class="card-img-top"
-                                alt="{{this.title}}"
-                            />
-                        </a>
-                        <div class="card-body bg-light">
+                {{/each}}
 
-                            <h5 class="card-title">{{this.name}}</h5>
-                            <hr />
-                            <div
-                                style="background-color: rgb(147, 234, 181);; border-radius: 1em;"
-                            >
-                                <p
-                                    class="card-text text-decoration-underline"
-                                    style="color: darkgreen; margin-left: 1em;  "
-                                >
-                                    {{this.offer}}% off
-                                </p>
-                            </div>
-                            <p class="card-text mt-1">Price: ₹<span
-                                    style="color: #896633;"
-                                    class="text-decoration-underline"
-                                >{{this.price}}</span></p>
-                            <div
-                                style="background-color: rgb(180, 180, 180); border-radius: 1em; margin-top: -0.5em;"
-                            >
-                                <p
-                                    class="card-text"
-                                    style="margin-left: 1em;"
-                                ><span class="text-dark">Delivery Charge</span>:
-                                    <span
-                                        class="text-success"
-                                    >{{this.charge}}</span>
-                                </p>
-                            </div>
-                            <button
-                                class="btn mt-1 m-auto w-100 mt-3"
-                                onclick="addtocart('{{this._id}}')"
-                                style="background-color: #896633; color: white; "
-                            >
-                                <i class="bi bi-cart4"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            {{/each}}
+            </div>
         </div>
-    </div>
-</section>
-{{! bag product }}
-<section class="bg-dark" id="bags">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="text-center text-light mt-3 mb-3">Bags</h1>
-            </div>
-            <div class="col-12">
-                <hr
-                    class="text-light mb-5"
-                    style="width: 50%; margin-left: auto ; margin-right: auto; margin-top: 0px;"
-                />
-            </div>
-            {{#each Bags}}
-                
-                <div class="col-md-4 col-12 mt-2 mb-5" style="z-index: 0; ">
-                    <div class="card">
-                        <a
-                            href="/details/{{this._id}}"
-                            class="text-decoration-none text-dark"
-                        >
-                            <img
-                                src="{{this.image}}"
-                                class="card-img-top"
-                                alt="{{this.title}}"
-                            />
-                        </a>
-                        <div class="card-body bg-light">
-
-                            <h5 class="card-title">{{this.name}}</h5>
-                            <hr />
-                            <div
-                                style="background-color: rgb(147, 234, 181);; border-radius: 1em;"
-                            >
-                                <p
-                                    class="card-text text-decoration-underline"
-                                    style="color: darkgreen; margin-left: 1em;  "
-                                >
-                                    {{this.offer}}% off
-                                </p>
-                            </div>
-                            <p class="card-text mt-1">Price: ₹<span
-                                    style="color: #896633;"
-                                    class="text-decoration-underline"
-                                >{{this.price}}</span></p>
-                            <div
-                                style="background-color: rgb(180, 180, 180); border-radius: 1em; margin-top: -0.5em;"
-                            >
-                                <p
-                                    class="card-text"
-                                    style="margin-left: 1em;"
-                                ><span class="text-dark">Delivery Charge</span>:
-                                    <span
-                                        class="text-success"
-                                    >{{this.charge}}</span>
-                                </p>
-                            </div>
-                            <button
-                                class="btn mt-1 m-auto w-100 mt-3"
-                                onclick="addtocart('{{this._id}}')"
-                                style="background-color: #896633; color: white; "
-                            >
-                                <i class="bi bi-cart4"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            {{/each}}
-        </div>
-    </div>
-</section>
-{{! footwears }}
-<section class="bg-success" id="footwears">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="text-center text-light mt-3 mb-3">Footwears</h1>
-            </div>
-            <div class="col-12">
-                <hr
-                    class="text-light mb-5"
-                    style="width: 50%; margin-left: auto ; margin-right: auto; margin-top: 0px;"
-                />
-            </div>
-            {{#each Footwears}}
-                
-                <div class="col-md-4 col-12 mt-2 mb-5" style="z-index: 0; ">
-                    <div class="card">
-                        <a
-                            href="/details/{{this._id}}"
-                            class="text-decoration-none text-dark"
-                        >
-                            <img
-                                src="{{this.image}}"
-                                class="card-img-top"
-                                alt="{{this.title}}"
-                            />
-                        </a>
-                        <div class="card-body bg-light">
-
-                            <h5 class="card-title">{{this.name}}</h5>
-                            <hr />
-                            <div
-                                style="background-color: rgb(147, 234, 181);; border-radius: 1em;"
-                            >
-                                <p
-                                    class="card-text text-decoration-underline"
-                                    style="color: darkgreen; margin-left: 1em;  "
-                                >
-                                    {{this.offer}}% off
-                                </p>
-                            </div>
-                            <p class="card-text mt-1">Price: ₹<span
-                                    style="color: #896633;"
-                                    class="text-decoration-underline"
-                                >{{this.price}}</span></p>
-                            <div
-                                style="background-color: rgb(180, 180, 180); border-radius: 1em; margin-top: -0.5em;"
-                            >
-                                <p
-                                    class="card-text"
-                                    style="margin-left: 1em;"
-                                ><span class="text-dark">Delivery Charge</span>:
-                                    <span
-                                        class="text-success"
-                                    >{{this.charge}}</span>
-                                </p>
-                            </div>
-                            <button
-                                class="btn mt-1 m-auto w-100 mt-3"
-                                onclick="addtocart('{{this._id}}')"
-                                style="background-color: #896633; color: white; "
-                            >
-                                <i class="bi bi-cart4"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            {{/each}}
-        </div>
-    </div>
-</section>
-{{! gadget product }}
-<section class="bg-dark" id="gadgets">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="text-center text-light mt-3 mb-3">Gadgets</h1>
-            </div>
-            <div class="col-12">
-                <hr
-                    class="text-light mb-5"
-                    style="width: 50%; margin-left: auto ; margin-right: auto; margin-top: 0px;"
-                />
-            </div>
-            {{#each Gadgets}}
-                
-                <div class="col-md-4 col-12 mt-2 mb-5" style="z-index: 0; ">
-                    <div class="card">
-                        <a
-                            href="/details/{{this._id}}"
-                            class="text-decoration-none text-dark"
-                        >
-                            <img
-                                src="{{this.image}}"
-                                class="card-img-top"
-                                alt="{{this.title}}"
-                            />
-                        </a>
-                        <div class="card-body bg-light">
-
-                            <h5 class="card-title">{{this.name}}</h5>
-                            <hr />
-                            <div
-                                style="background-color: rgb(147, 234, 181);; border-radius: 1em;"
-                            >
-                                <p
-                                    class="card-text text-decoration-underline"
-                                    style="color: darkgreen; margin-left: 1em;  "
-                                >
-                                    {{this.offer}}% off
-                                </p>
-                            </div>
-                            <p class="card-text mt-1">Price: ₹<span
-                                    style="color: #896633;"
-                                    class="text-decoration-underline"
-                                >{{this.price}}</span></p>
-                            <div
-                                style="background-color: rgb(180, 180, 180); border-radius: 1em; margin-top: -0.5em;"
-                            >
-                                <p
-                                    class="card-text"
-                                    style="margin-left: 1em;"
-                                ><span class="text-dark">Delivery Charge</span>:
-                                    <span
-                                        class="text-success"
-                                    >{{this.charge}}</span>
-                                </p>
-                            </div>
-                            <button
-                                class="btn mt-1 m-auto w-100 mt-3"
-                                onclick="addtocart('{{this._id}}')"
-                                style="background-color: #896633; color: white; "
-                            >
-                                <i class="bi bi-cart4"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            {{/each}}
-        </div>
-    </div>
-</section>
-{{! Gadget accessories }}
-<section class="bg-success" id="gadget-a">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="text-center text-light mt-3 mb-3">Gadget accessories</h1>
-            </div>
-            <div class="col-12">
-                <hr
-                    class="text-light mb-5"
-                    style="width: 50%; margin-left: auto ; margin-right: auto; margin-top: 0px;"
-                />
-            </div>
-            {{#each gadgetaccessories}}
-                
-                <div class="col-md-4 col-12 mt-2 mb-5" style="z-index: 0; ">
-                    <div class="card">
-                        <a
-                            href="/details/{{this._id}}"
-                            class="text-decoration-none text-dark"
-                        >
-                            <img
-                                src="{{this.image}}"
-                                class="card-img-top"
-                                alt="{{this.title}}"
-                            />
-                        </a>
-                        <div class="card-body bg-light">
-
-                            <h5 class="card-title">{{this.name}}</h5>
-                            <hr />
-                            <div
-                                style="background-color: rgb(147, 234, 181);; border-radius: 1em;"
-                            >
-                                <p
-                                    class="card-text text-decoration-underline"
-                                    style="color: darkgreen; margin-left: 1em;  "
-                                >
-                                    {{this.offer}}% off
-                                </p>
-                            </div>
-                            <p class="card-text mt-1">Price: ₹<span
-                                    style="color: #896633;"
-                                    class="text-decoration-underline"
-                                >{{this.price}}</span></p>
-                            <div
-                                style="background-color: rgb(180, 180, 180); border-radius: 1em; margin-top: -0.5em;"
-                            >
-                                <p
-                                    class="card-text"
-                                    style="margin-left: 1em;"
-                                ><span class="text-dark">Delivery Charge</span>:
-                                    <span
-                                        class="text-success"
-                                    >{{this.charge}}</span>
-                                </p>
-                            </div>
-                            <button
-                                class="btn mt-1 m-auto w-100 mt-3"
-                                onclick="addtocart('{{this._id}}')"
-                                style="background-color: #896633; color: white; "
-                            >
-                                <i class="bi bi-cart4"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            {{/each}}
-        </div>
-    </div>
-</section>
-{{! Fashion accessories }}
-<section class="bg-dark" id="fashion">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="text-center text-light mt-3 mb-3">Fashion accessories</h1>
-            </div>
-            <div class="col-12">
-                <hr
-                    class="text-light mb-5"
-                    style="width: 50%; margin-left: auto ; margin-right: auto; margin-top: 0px;"
-                />
-            </div>
-            {{#each Fashion}}
-                
-                <div class="col-md-4 col-12 mt-2 mb-5" style="z-index: 0; ">
-                    <div class="card">
-                        <a
-                            href="/details/{{this._id}}"
-                            class="text-decoration-none text-dark"
-                        >
-                            <img
-                                src="{{this.image}}"
-                                class="card-img-top"
-                                alt="{{this.title}}"
-                            />
-                        </a>
-                        <div class="card-body bg-light">
-
-                            <h5 class="card-title">{{this.name}}</h5>
-                            <hr />
-                            <div
-                                style="background-color: rgb(147, 234, 181);; border-radius: 1em;"
-                            >
-                                <p
-                                    class="card-text text-decoration-underline"
-                                    style="color: darkgreen; margin-left: 1em;  "
-                                >
-                                    {{this.offer}}% off
-                                </p>
-                            </div>
-                            <p class="card-text mt-1">Price: ₹<span
-                                    style="color: #896633;"
-                                    class="text-decoration-underline"
-                                >{{this.price}}</span></p>
-                            <div
-                                style="background-color: rgb(180, 180, 180); border-radius: 1em; margin-top: -0.5em;"
-                            >
-                                <p
-                                    class="card-text"
-                                    style="margin-left: 1em;"
-                                ><span class="text-dark">Delivery Charge</span>:
-                                    <span
-                                        class="text-success"
-                                    >{{this.charge}}</span>
-                                </p>
-                            </div>
-                            <button
-                                class="btn mt-1 m-auto w-100 mt-3"
-                                onclick="addtocart('{{this._id}}')"
-                                style="background-color: #896633; color: white; "
-                            >
-                                <i class="bi bi-cart4"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            {{/each}}
-        </div>
-    </div>
-</section>
-{{! Electronics }}
-<section class="bg-success" id="electronics">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="text-center text-light mt-3 mb-3">Electronics</h1>
-            </div>
-            <div class="col-12">
-                <hr
-                    class="text-light mb-5"
-                    style="width: 50%; margin-left: auto ; margin-right: auto; margin-top: 0px;"
-                />
-            </div>
-            {{#each Electronics}}
-                
-                <div class="col-md-4 col-12 mt-2 mb-5" style="z-index: 0; ">
-                    <div class="card">
-                        <a
-                            href="/details/{{this._id}}"
-                            class="text-decoration-none text-dark"
-                        >
-                            <img
-                                src="{{this.image}}"
-                                class="card-img-top"
-                                alt="{{this.title}}"
-                            />
-                        </a>
-                        <div class="card-body bg-light">
-
-                            <h5 class="card-title">{{this.name}}</h5>
-                            <hr />
-                            <div
-                                style="background-color: rgb(147, 234, 181);; border-radius: 1em;"
-                            >
-                                <p
-                                    class="card-text text-decoration-underline"
-                                    style="color: darkgreen; margin-left: 1em;  "
-                                >
-                                    {{this.offer}}% off
-                                </p>
-                            </div>
-                            <p class="card-text mt-1">Price: ₹<span
-                                    style="color: #896633;"
-                                    class="text-decoration-underline"
-                                >{{this.price}}</span></p>
-                            <div
-                                style="background-color: rgb(180, 180, 180); border-radius: 1em; margin-top: -0.5em;"
-                            >
-                                <p
-                                    class="card-text"
-                                    style="margin-left: 1em;"
-                                ><span class="text-dark">Delivery Charge</span>:
-                                    <span
-                                        class="text-success"
-                                    >{{this.charge}}</span>
-                                </p>
-                            </div>
-                            <button
-                                class="btn mt-1 m-auto w-100 mt-3"
-                                onclick="addtocart('{{this._id}}')"
-                                style="background-color: #896633; color: white; "
-                            >
-                                <i class="bi bi-cart4"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            {{/each}}
-        </div>
-    </div>
-</section>
-{{! daily using products }}
-<section class="bg-dark" id="daily">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="text-center text-light mt-3 mb-3">daily using
-                    products</h1>
-            </div>
-            <div class="col-12">
-                <hr
-                    class="text-light mb-5"
-                    style="width: 50%; margin-left: auto ; margin-right: auto; margin-top: 0px;"
-                />
-            </div>
-            {{#each Daily}}
-                
-                <div class="col-md-4 col-12 mt-2 mb-5" style="z-index: 0; ">
-                    <div class="card">
-                        <a
-                            href="/details/{{this._id}}"
-                            class="text-decoration-none text-dark"
-                        >
-                            <img
-                                src="{{this.image}}"
-                                class="card-img-top"
-                                alt="{{this.title}}"
-                            />
-                        </a>
-                        <div class="card-body bg-light">
-
-                            <h5 class="card-title">{{this.name}}</h5>
-                            <hr />
-                            <div
-                                style="background-color: rgb(147, 234, 181);; border-radius: 1em;"
-                            >
-                                <p
-                                    class="card-text text-decoration-underline"
-                                    style="color: darkgreen; margin-left: 1em;  "
-                                >
-                                    {{this.offer}}% off
-                                </p>
-                            </div>
-                            <p class="card-text mt-1">Price: ₹<span
-                                    style="color: #896633;"
-                                    class="text-decoration-underline"
-                                >{{this.price}}</span></p>
-                            <div
-                                style="background-color: rgb(180, 180, 180); border-radius: 1em; margin-top: -0.5em;"
-                            >
-                                <p
-                                    class="card-text"
-                                    style="margin-left: 1em;"
-                                ><span class="text-dark">Delivery Charge</span>:
-                                    <span
-                                        class="text-success"
-                                    >{{this.charge}}</span>
-                                </p>
-                            </div>
-                            <button
-                                class="btn mt-1 m-auto w-100 mt-3"
-                                onclick="addtocart('{{this._id}}')"
-                                style="background-color: #896633; color: white; "
-                            >
-                                <i class="bi bi-cart4"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            {{/each}}
-        </div>
-    </div>
-</section>
+    </section>
+{{/each}}
 {{! footer }}
 <footer class="bg-success" id="footer">
     <div class="container">
@@ -908,3 +239,6 @@
         </div>
     </div>
 </footer>
+<script>
+    function loaded(index) { console.log(index); }
+</script>

@@ -29,57 +29,28 @@ router.get("/", async (req, res, next) => {
     });
 });
 router.get("/products", async function (req, res) {
+
+    let obj=await userhelpers.getcategoriesforproductpage()
+    let obj2=await userhelpers.getcategoriesforproductpage()
+    let scroller= await userhelpers.getcategoryforscroller()
     let user = req.session.user;
     let cartcount = null;
     if (user) {
         cartcount = await userhelpers.getcartcount(user._id);
     }
-    producthelper.getallproducts("Mens").then((Mens) => {
-        producthelper.getallproducts("Kids").then((Kids) => {
-            producthelper.getallproducts("Bags").then((Bags) => {
-                producthelper.getallproducts("Footwears").then((Footwears) => {
-                    producthelper.getallproducts("Gadgets").then((Gadgets) => {
-                        producthelper
-                            .getallproducts("Fashion accessories")
-                            .then((Fashion) => {
-                                producthelper
-                                    .getallproducts("Gadget accessories")
-                                    .then((gadgetaccessories) => {
-                                        producthelper
-                                            .getallproducts("Electronics")
-                                            .then((Electronics) => {
-                                                producthelper
-                                                    .getallproducts(
-                                                        "daily using products"
-                                                    )
-                                                    .then((Daily) => {
-                                                        res.render(
-                                                            "user/products",
-                                                            {
-                                                                name: "Classic bazaar",
-                                                                product: true,
-                                                                Mens,
-                                                                Kids,
-                                                                Bags,
-                                                                Footwears,
-                                                                Gadgets,
-                                                                Fashion,
-                                                                gadgetaccessories,
-                                                                Electronics,
-                                                                Daily,
-                                                                user,
-                                                                cartcount,
-                                                            }
-                                                        );
-                                                    });
-                                            });
-                                    });
-                            });
-                    });
-                });
-            });
-        });
-    });
+    let result = [];
+    let index = null;
+    for (let i = 0; i < obj.length; i++) {
+        index = obj2.findIndex((object) => object === obj[i]);
+        obj[i] = await producthelper.getallproducts(obj[i]);
+        if (index % 2 == 0) {
+            result.push({ even: true, name: obj2[i], product: obj[i] });
+        } else {
+            result.push({ even: false, name: obj2[i], product: obj[i] });
+        }
+    }
+    console.log(result);
+    res.render("user/products", { result, scroller});
 });
 router.get("/login", (req, res) => {
     if (req.session.loggedin) {
@@ -245,7 +216,7 @@ router.get("/details/:productid", async (req, res) => {
             console.log("File created");
         }
     );
-    let icon=product._id
+    let icon = product._id;
     let name = product.name;
     res.render("user/product-details", { product, icon, name });
 });

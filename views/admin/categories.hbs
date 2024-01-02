@@ -1,0 +1,46 @@
+<section style="padding-top: 5em;">
+    <div class="container">
+        <form action="/admin/add-categories" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <h1 class="text-success text-center">Add Categories</h1>
+                <div class="col-12 mb-5">
+                    <hr class="text-dark w-50 m-auto" />
+                </div>
+                <div class="col-10 mt-5 m-auto">
+                    <input
+                        type="text "
+                        name="name"
+                        placeholder="type the name of the category"
+                        class="form-control text-center"
+                        required
+                    />
+                </div>
+                {{! file }}
+                <div class="col-10 m-auto mt-5">
+
+                    <input
+                        type="file"
+                        class="form-control"
+                        name="image"
+                        id="productimage"
+                        placeholder="add file for the scroller"
+                        aria-describedby="fileHelpId"
+                        required
+                    />
+
+                </div>
+                {{! hidden input }}
+                <input type="text" value="" hidden name="image" id="hideinput" />
+                {{! submit }}
+                <div class="col-6 m-auto mt-4">
+                    <input
+                        type="submit"
+                        class="w-100 btn btn-outline-success"
+                        value="ADD"
+                    />
+
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
