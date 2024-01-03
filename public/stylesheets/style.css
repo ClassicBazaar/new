@@ -1,10 +1,9 @@
-#loading{
+#loading {
     height: 100vh;
     background: url(/images/home/loading.gif) no-repeat;
     background-size: auto;
     background-position: center;
 }
-
 
 ::-webkit-scrollbar {
     height: 0.5em;
@@ -122,7 +121,7 @@ body::-webkit-scrollbar {
         text-align: center;
         color: white;
     }
-    .text{
+    .text {
         font-size: 13px;
     }
 }
@@ -202,18 +201,18 @@ body::-webkit-scrollbar {
         text-align: center;
         color: white;
     }
-    .text{
+    .text {
         font-size: 20px;
     }
 }
 /* auto scrolling animation */
-.scroller {
+/* .scroller {
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: 26%;
-    /* overflow: hidden ; */
-    overflow: scroll;
-}
+    overflow: hidden ; */
+/* overflow: scroll;
+} 
 /* .scroller>a {
     animation: infinite;
     animation-name: scrolling;
@@ -239,3 +238,43 @@ body::-webkit-scrollbar {
         transform: translateX(-10%);
     }
 } */
+
+
+.scroller {
+    height: 30em;
+    margin: auto;
+    position: relative;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    overflow: hidden !important;
+}
+.scroller-track {
+    display: flex;
+    width: 100%;
+    animation: scroll 8s linear infinite;
+}
+.scroller:hover  {
+    &>.scroller-track{
+     animation-play-state: paused;
+    }
+}
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.slide {
+    height: 90vh;
+    width: 15em;
+    display: flex;
+    align-items: center;
+    perspective: 100px;
+}
+.slide:hover {
+    transform: translateZ(20px);
+}

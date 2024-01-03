@@ -9,9 +9,11 @@
         class="text-white mb-5"
         style="width: 50%; margin-left: auto ; margin-right: auto; margin-top: 0px;"
     />
-    <div class="scroller mt-2 pb-5">
+    <div class="scroller">
+        <div class="scroller-track  pb-5">
+        
         {{#each scroller}}
-            <a href="#{{this.name}}" class="text-decoration-none">
+            <a href="#{{this.name}}" class="slide text-decoration-none">
                 <div
                     class="card hover"
                     style="border-radius: 1em; background-color: #f6f6f6;"
@@ -26,6 +28,24 @@
                 </div>
             </a>
         {{/each}}
+        {{!-- second one --}}
+        {{#each scroller}}
+            <a href="#{{this.name}}" class="slide text-decoration-none">
+                <div
+                    class="card hover"
+                    style="border-radius: 1em; background-color: #f6f6f6;"
+                >
+                    <img
+                        src="{{this.image}}"
+                        alt=""
+                        class="image rounded-circle"
+                    />
+
+                    <h6 class="text-center text-dark text">{{this.name}}</h6>
+                </div>
+            </a>
+        {{/each}}
+    </div>
     </div>
 </section>
 {{! mens products }}
