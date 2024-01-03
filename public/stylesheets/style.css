@@ -241,7 +241,7 @@ body::-webkit-scrollbar {
 
 
 .scroller {
-    height: 30em;
+    height: 50vh;
     margin: auto;
     position: relative;
     width: 100%;
@@ -251,6 +251,7 @@ body::-webkit-scrollbar {
 }
 .scroller-track {
     display: flex;
+    height: auto;
     width: 100%;
     animation: scroll 8s linear infinite;
 }
@@ -271,6 +272,8 @@ body::-webkit-scrollbar {
 .slide {
     height: 90vh;
     width: 15em;
+    margin-top: -10em;
+    margin-bottom: -10em;
     display: flex;
     align-items: center;
     perspective: 100px;
