@@ -2,19 +2,29 @@
     <div class="container">
         <h1 class="text-dark text-center">Orders</h1>
         <hr class="w-25 m-auto" />
-        <div class="row">
+        <div class="row " style="margin-bottom: 5em;" >
             {{#each orderlist}}
                 <div class="col-md-6 mt-3 col-12">
                     <div
-                        class="o-card w-100 d-grid bg-dark mt-5 h-100"
+                        class="card  m-auto  d-grid bg-dark"
                         style="border-radius: 1em;"
                     >
                         <h3 class="text-white m-auto">Order on :
-                            <span style="font-size: 20px;">{{this.date}}</span>/<span style="font-size: 20px;">{{this.month}}</span>/<span style="font-size: 20px;">{{this.year}}</span>
+                            <span
+                                style="font-size: 20px;"
+                            >{{this.date}}</span>/<span
+                                style="font-size: 20px;"
+                            >{{this.month}}</span>/<span
+                                style="font-size: 20px;"
+                            >{{this.year}}</span>
                         </h3>
-                        <h6 class="text-light text-center">status : <span class="text-success ">{{this.status}}</span> </h6>
-                        <a href="/order-product-details/{{this._id}}/{{this.user}}" class="btn btn-success  w-50 m-auto">View
-                            details</a>
+                        <h6 class="text-light text-center">status :
+                            <span class="text-success">{{this.status}}</span>
+                        </h6>
+                        <a
+                            href="/order-product-details/{{this._id}}/{{this.user}}"
+                            class="btn btn-success w-50 mb-3 mt-3 m-auto"
+                        >View details</a>
                     </div>
                 </div>
             {{/each}}

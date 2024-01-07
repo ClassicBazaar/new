@@ -7,12 +7,12 @@ var userhelpers = require("../helpers/user-helpers");
 /* GET users listing. */
 // verifing admin login
 const verifyadminlogin = (req, res, next) => {
-    // if (req.session.adminloggedin) {
-    //     next();
-    // } else {
-    //     res.redirect("/admin/admin-login");
-    // }
-    next()
+    if (req.session.adminloggedin) {
+        next();
+    } else {
+        res.redirect("/admin/admin-login");
+    }
+    // next()
 };
 //improtrant admin login
 

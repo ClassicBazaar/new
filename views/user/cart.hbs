@@ -13,12 +13,17 @@
             {{#each items}}
                 <div class="col-12 col-md-8 m-auto">
                     <div class="cart-card bg-dark">
-                        <img
-                            class="cart-item-image rounded-circle"
-                            src="{{this.product.image}}"
-                            alt=""
-                            srcset=""
-                        />
+                        <a
+                            href="/details/{{this.product._id}}"
+                            class="text-decoration-none text-dark"
+                        >
+                            <img
+                                class="cart-item-image rounded-circle"
+                                src="{{this.product.image}}"
+                                alt=""
+                                srcset=""
+                            />
+                        </a>
                         <h4 class="cart-item-name text-white">
                             {{this.product.name}}
                         </h4>
@@ -47,8 +52,11 @@
                             style="-webkit-appearance: none !important;"
                             onchange="changesize(this.value,'{{this._id}}','{{this.product._id}}')"
                         >
-                        <option value="{{this.size}}" class="option-group">{{this.size}}</option>
-                         {{#each this.product.size}}
+                            <option
+                                value="{{this.size}}"
+                                class="option-group"
+                            >{{this.size}}</option>
+                            {{#each this.product.size}}
                                 <option
                                     value="{{this}}"
                                     class="option-group"

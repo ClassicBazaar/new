@@ -8,11 +8,65 @@
             {{#each products}}
                 <div class="col-12 col-md-3 m-auto">
                     <div class="card h-100">
-                        <img
+                        <a
+                            href="/details/{{this._id}}"
+                            class="text-decoration-none text-dark"
+                        >
+                            <div
+                                id="carouselId"
+                                class="carousel"
+                                data-bs-ride="carousel"
+                            >
+                                <ol class="carousel-indicators">
+                                    <li
+                                        data-bs-target="#carouselId"
+                                        data-bs-slide-to="0"
+                                        class="active"
+                                        aria-current="true"
+                                        aria-label="First slide"
+                                    ></li>
+                                    <li
+                                        data-bs-target="#carouselId"
+                                        data-bs-slide-to="1"
+                                        aria-label="Second slide"
+                                    ></li>
+                                    <li
+                                        data-bs-target="#carouselId"
+                                        data-bs-slide-to="2"
+                                        aria-label="Third slide"
+                                    ></li>
+                                </ol>
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="carousel-item active">
+                                        <img
+                                            src="{{this.product.image}}"
+                                            class="w-100 d-block"
+                                            alt="First slide"
+                                        />
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img
+                                            src="{{this.product.image2}}"
+                                            class="w-100 d-block"
+                                            alt="Second slide"
+                                        />
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img
+                                            src="{{this.product.image3}}"
+                                            class="w-100 d-block"
+                                            alt="Third slide"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        {{!-- <img
                             src="{{this.product.image}}"
                             class="card-img-top img-fluid"
                             alt="{{this.product.name}}"
-                        />
+                        /> --}}
                         <div class="card-body bg-light">
 
                             <h5 class="card-title">{{this.product.name}}</h5>
@@ -39,11 +93,11 @@
                             </div>
                             {{! size }}
                             <div
-                            class="bg-info mt-2"
+                                class="bg-info mt-2"
                                 style=" border-radius: 1em;  margin-top: -0.5em;"
                             >
                                 <p
-                                    class="card-text "
+                                    class="card-text"
                                     style="color: rgb(0, 0, 0); margin-left: 1em;  "
                                 >
                                     size :

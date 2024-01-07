@@ -37,21 +37,68 @@
                     <tbody>
                         {{#each products}}
                             <tr>
-                                <th scope="row">{{@index}}</th>
-                                <td>{{this.name}}</td>
-                                <td>₹{{this.price}}</td>
-                                <td>{{this.category}}</td>
-                                <td>{{this.offer}}%</td>
-                                <td>{{this.charge}}</td>
-                                <td>
-                                    <img
-                                        src="{{this.image}}"
-                                        alt=""
-                                        style="width: 50px; height: 50px;"
-                                    />
+                                <th style="vertical-align: middle;" scope="row">{{@index}}</th>
+                                <td style="vertical-align: middle;">{{this.name}}</td>
+                                <td style="vertical-align: middle;">₹{{this.price}}</td>
+                                <td style="vertical-align: middle;">{{this.category}}</td>
+                                <td style="vertical-align: middle;">{{this.offer}}%</td>
+                                <td style="vertical-align: middle;">{{this.charge}}</td>
+
+                                <td style="width: 10% !important;vertical-align: middle; " >
+                                    <div
+                                        id="carouselId"
+                                        class="carousel "
+                                        data-bs-ride="carousel"
+                                    >
+                                        <ol class="carousel-indicators">
+                                            <li
+                                                data-bs-target="#carouselId"
+                                                data-bs-slide-to="0"
+                                                class="active"
+                                                aria-current="true"
+                                                aria-label="First slide"
+                                            ></li>
+                                            <li
+                                                data-bs-target="#carouselId"
+                                                data-bs-slide-to="1"
+                                                aria-label="Second slide"
+                                            ></li>
+                                            <li
+                                                data-bs-target="#carouselId"
+                                                data-bs-slide-to="2"
+                                                aria-label="Third slide"
+                                            ></li>
+                                        </ol>
+                                        <div
+                                            class="carousel-inner"
+                                            role="listbox"
+                                        >
+                                            <div class="carousel-item active">
+                                                <img
+                                                    src="{{this.image}}"
+                                                    class="w-100 d-block"
+                                                    alt="First slide"
+                                                />
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img
+                                                    src="{{this.image2}}"
+                                                    class="w-100 d-block"
+                                                    alt="Second slide"
+                                                />
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img
+                                                    src="{{this.image3}}"
+                                                    class="w-100 d-block"
+                                                    alt="Third slide"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </td>
-                                {{! edit button }}
-                                <td>
+                                <td style="vertical-align: middle;">
                                     <a href="/admin/edit-product/{{this._id}}">
                                         <i
                                             class="btn btn-success bi bi-pencil-square"
@@ -60,7 +107,7 @@
                                     </a>
                                 </td>
                                 {{! delete button }}
-                                <td>
+                                <td style="vertical-align: middle;">
                                     <a
                                         href="/admin/delete-product/{{this._id}}"
                                         onclick="return confirm('Are you sure you want to delete {{this.name}} ?')"
