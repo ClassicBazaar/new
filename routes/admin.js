@@ -12,7 +12,6 @@ const verifyadminlogin = (req, res, next) => {
     } else {
         res.redirect("/admin/admin-login");
     }
-    // next()
 };
 //improtrant admin login
 

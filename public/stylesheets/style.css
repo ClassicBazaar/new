@@ -49,6 +49,9 @@ body::-webkit-scrollbar {
 }
 /* mobile phones */
 @media (max-width: 767px) {
+    .details {
+        margin-top: 9em;
+    }
     .cart-card {
         border-radius: 5em;
         margin-bottom: 2em;
@@ -128,6 +131,7 @@ body::-webkit-scrollbar {
 
 /* tabs to tvs */
 @media (min-width: 767px) and (max-width: 3840px) {
+
     .cart-card {
         display: grid;
         margin-bottom: 2em;
@@ -239,7 +243,6 @@ body::-webkit-scrollbar {
     }
 } */
 
-
 .scroller {
     height: 50vh;
     margin: auto;
@@ -255,9 +258,9 @@ body::-webkit-scrollbar {
     width: 100%;
     animation: scroll 8s linear infinite;
 }
-.scroller:hover  {
-    &>.scroller-track{
-     animation-play-state: paused;
+.scroller:hover {
+    & > .scroller-track {
+        animation-play-state: paused;
     }
 }
 @keyframes scroll {
@@ -280,4 +283,9 @@ body::-webkit-scrollbar {
 }
 .slide:hover {
     transform: translateZ(20px);
+}
+@media (min-width: 497px) and (max-width: 3840px) {
+    .details{
+        margin-top: 20em;
+    }
 }
