@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var producthelper = require("../helpers/product-helpers");
 var fs = require("fs");
+var userhelpers=require('../helpers/user-helpers')
 
 /* GET users listing. */
 // verifing admin login
@@ -118,12 +119,21 @@ router.get("/delete-order/:id", verifyadminlogin, (req, res) => {
         }
     });
 });
-router.get("/add-categories",verifyadminlogin, (req, res) => {
-    res.render("admin/categories");
+router.get("/add-categories",verifyadminlogin,async (req, res) => {
+    let category=await  userhelpers.getcategoryforscroller()
+    res.render("admin/categories",{category});
 });
 router.post("/add-categories", verifyadminlogin, (req, res) => {
     producthelper.addcategories(req.body).then((response) => {
         res.redirect("/admin");
     });
 });
+
+router.get('/delete-category/:index',(req,res)=>{
+    
+    producthelper.deletecategory(req.params.index).then((response)=>{
+        res.redirect('/admin/add-categories')
+    })
+
+})
 module.exports = router;

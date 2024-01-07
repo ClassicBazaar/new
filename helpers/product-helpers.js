@@ -327,4 +327,20 @@ module.exports = {
             resolve(category[0].category);
         });
     },
+    deletecategory: (name) => {
+        return new Promise(async (resolve, reject) => {
+            let category = await db
+                .get()
+                .collection(collections.CATEGORY_COLLECTION)
+                .updateOne(
+                    {},
+                    {
+                        $pull: {category:{name:name  },}
+                    }
+                );
+
+            console.log(category);
+            resolve(category)
+        });
+    },
 };

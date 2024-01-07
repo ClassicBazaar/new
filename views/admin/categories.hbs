@@ -1,44 +1,105 @@
 <section style="padding-top: 5em;">
     <div class="container">
-        <form action="/admin/add-categories" method="post" enctype="multipart/form-data">
+        <form
+            action="/admin/add-categories"
+            method="post"
+            enctype="multipart/form-data"
+        >
             <div class="row">
-                <h1 class="text-success text-center">Add Categories</h1>
-                <div class="col-12 mb-5">
-                    <hr class="text-dark w-50 m-auto" />
-                </div>
-                <div class="col-10 mt-5 m-auto">
-                    <input
-                        type="text "
-                        name="name"
-                        placeholder="type the name of the category"
-                        class="form-control text-center"
-                        required
-                    />
-                </div>
-                {{! file }}
-                <div class="col-10 m-auto mt-5">
+                <div class="col-6" style="     border-right: solid;">
+                    <div class="row">
+                        <h1 class="text-success text-center">Add Categories</h1>
+                        <div class="col-12 mb-5">
+                            <hr class="text-dark w-50 m-auto" />
+                        </div>
+                        <div class="col-12 mt-5 m-auto">
+                            <input
+                                type="text "
+                                name="name"
+                                placeholder="type the name of the category"
+                                class="form-control text-center"
+                                required
+                            />
+                        </div>
+                        {{! file }}
+                        <div class="col-12 m-auto mt-5">
 
-                    <input
-                        type="file"
-                        class="form-control"
-                        name="image"
-                        id="productimage"
-                        placeholder="add file for the scroller"
-                        aria-describedby="fileHelpId"
-                        required
-                    />
+                            <input
+                                type="file"
+                                class="form-control"
+                                name="image"
+                                id="productimage"
+                                placeholder="add file for the scroller"
+                                aria-describedby="fileHelpId"
+                                required
+                            />
 
+                        </div>
+                        {{! hidden input }}
+                        <input
+                            type="text"
+                            value=""
+                            hidden
+                            name="image"
+                            id="hideinput"
+                        />
+                        {{! submit }}
+                        <div class="col-8 m-auto mt-4">
+                            <input
+                                type="submit"
+                                class="w-100 btn btn-outline-success"
+                                value="ADD"
+                            />
+
+                        </div>
+                    </div>
                 </div>
-                {{! hidden input }}
-                <input type="text" value="" hidden name="image" id="hideinput" />
-                {{! submit }}
-                <div class="col-6 m-auto mt-4">
-                    <input
-                        type="submit"
-                        class="w-100 btn btn-outline-success"
-                        value="ADD"
-                    />
 
+                <div class="col-6 pb-5" style="overflow-: scroll;" >
+                    <div class="row">
+                        <h1 class="text-success text-center">All Categories</h1>
+                        <div class="col-12 mb-5">
+                            <hr class="text-dark w-50 m-auto" />
+                        </div>
+                        {{#each category}}
+
+                            <div
+                                class="col-11 mt-2 m-auto p-1"
+                                style="background-color: rgb(29, 133, 102); border-radius: 1em; vertical-align: middle; ;"
+                            >
+                                <div class="row">
+                                    <div class="col-2">
+                                        {{! image }}
+                                        <img
+                                            src="{{this.image}}"
+                                            class="img-fluid rounded-circle w-100"
+                                            alt=""
+                                        />
+                                    </div>
+                                    <div class="col-8">
+                                        {{! name }}
+                                        <h4
+                                            style="color: white; margin-left: 0.5em;"
+                                        >{{this.name}}</h4>
+
+                                    </div>
+                                    <div class="col-2">
+                                        {{! delete button }}
+                                        <a
+                                            href="/admin/delete-category/{{this.name}}"
+                                            class="rounded-circle"
+                                            onclick="return confirm('Are you sure you want to delete {{this.name}} ?')"
+                                        >
+                                            <i
+                                                class="btn btn-danger rounded-circle bi bi-trash3-fill"
+                                            >D</i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        {{/each}}
+                    </div>
                 </div>
             </div>
         </form>
