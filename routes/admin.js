@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var producthelper = require("../helpers/product-helpers");
 var fs = require("fs");
-var userhelpers=require('../helpers/user-helpers')
+var userhelpers = require("../helpers/user-helpers");
 
 /* GET users listing. */
 // verifing admin login
@@ -52,9 +52,9 @@ router.get("/", verifyadminlogin, (req, res, next) => {
     });
 });
 
-router.get("/add-product", verifyadminlogin, async(req, res) => {
-    let category=await producthelper.getcategoriesforproductpage()
-    res.render("admin/add-product", { admin: true ,category});
+router.get("/add-product", verifyadminlogin, async (req, res) => {
+    let category = await producthelper.getcategoriesforproductpage();
+    res.render("admin/add-product", { admin: true, category });
 });
 router.post("/add-product", verifyadminlogin, async (req, res) => {
     console.log(req.body);
@@ -73,8 +73,8 @@ router.get("/delete-product/:id", verifyadminlogin, (req, res) => {
 });
 router.get("/edit-product/:id", verifyadminlogin, async (req, res) => {
     let product = await producthelper.getproduct(req.params.id);
-    let category=await producthelper.getcategoriesforproductpage()
-    res.render("admin/edit-product", { product,category });
+    let category = await producthelper.getcategoriesforproductpage();
+    res.render("admin/edit-product", { product, category });
 });
 router.post("/edit-product/:id", verifyadminlogin, (req, res) => {
     req.body.price = parseInt(req.body.price);
@@ -119,9 +119,9 @@ router.get("/delete-order/:id", verifyadminlogin, (req, res) => {
         }
     });
 });
-router.get("/add-categories",verifyadminlogin,async (req, res) => {
-    let category=await  userhelpers.getcategoryforscroller()
-    res.render("admin/categories",{category});
+router.get("/add-categories", verifyadminlogin, async (req, res) => {
+    let category = await userhelpers.getcategoryforscroller();
+    res.render("admin/categories", { category });
 });
 router.post("/add-categories", verifyadminlogin, (req, res) => {
     producthelper.addcategories(req.body).then((response) => {
@@ -129,11 +129,9 @@ router.post("/add-categories", verifyadminlogin, (req, res) => {
     });
 });
 
-router.get('/delete-category/:index',(req,res)=>{
-    
-    producthelper.deletecategory(req.params.index).then((response)=>{
-        res.redirect('/admin/add-categories')
-    })
-
-})
+router.get("/delete-category/:index", verifyadminlogin, (req, res) => {
+    producthelper.deletecategory(req.params.index).then((response) => {
+        res.redirect("/admin/add-categories");
+    });
+});
 module.exports = router;
