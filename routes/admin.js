@@ -74,7 +74,7 @@ router.get("/delete-product/:id", verifyadminlogin, (req, res) => {
 router.get("/edit-product/:id", verifyadminlogin, async (req, res) => {
     let product = await producthelper.getproduct(req.params.id);
     let category = await producthelper.getcategoriesforproductpage();
-    res.render("admin/edit-product", { product, category });
+    res.render("admin/edit-product", {admin:true, product, category });
 });
 router.post("/edit-product/:id", verifyadminlogin, (req, res) => {
     req.body.price = parseInt(req.body.price);
@@ -121,7 +121,7 @@ router.get("/delete-order/:id", verifyadminlogin, (req, res) => {
 });
 router.get("/add-categories", verifyadminlogin, async (req, res) => {
     let category = await userhelpers.getcategoryforscroller();
-    res.render("admin/categories", { category });
+    res.render("admin/categories", {admin:true, category });
 });
 router.post("/add-categories", verifyadminlogin, (req, res) => {
     producthelper.addcategories(req.body).then((response) => {
