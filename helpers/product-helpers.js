@@ -7,7 +7,6 @@ module.exports = {
     addproduct: (product) => {
         return new Promise((resolve, reject) => {
             product.size = product.size.split(",");
-            console.log(product);
             db.get()
                 .collection("products")
                 .insertOne(product)
@@ -58,6 +57,7 @@ module.exports = {
     updateproduct: (id, product) => {
         product.size = product.size.split(",");
         return new Promise((resolve, reject) => {
+            // image 1
             if (product.image) {
                 db.get()
                     .collection(collections.PRODUCT_COLLECTION)
@@ -72,6 +72,88 @@ module.exports = {
                                 charge: product.charge,
                                 size: product.size,
                                 image: product.image,
+                            },
+                        }
+                    )
+                    .then((response) => {
+                        resolve(response);
+                    });
+            } else {
+                db.get()
+                    .collection(collections.PRODUCT_COLLECTION)
+                    .updateOne(
+                        { _id: new ObjectId(id) },
+                        {
+                            $set: {
+                                name: product.name,
+                                price: product.price,
+                                category: product.category,
+                                offer: product.offer,
+                                charge: product.charge,
+                                size: product.size,
+                            },
+                        }
+                    )
+                    .then((response) => {
+                        resolve(response);
+                    });
+            }
+            // image 2
+            if (product.image2) {
+                db.get()
+                    .collection(collections.PRODUCT_COLLECTION)
+                    .updateOne(
+                        { _id: new ObjectId(id) },
+                        {
+                            $set: {
+                                name: product.name,
+                                price: product.price,
+                                category: product.category,
+                                offer: product.offer,
+                                charge: product.charge,
+                                size: product.size,
+                                image2: product.image2,
+                            },
+                        }
+                    )
+                    .then((response) => {
+                        resolve(response);
+                    });
+            } else {
+                db.get()
+                    .collection(collections.PRODUCT_COLLECTION)
+                    .updateOne(
+                        { _id: new ObjectId(id) },
+                        {
+                            $set: {
+                                name: product.name,
+                                price: product.price,
+                                category: product.category,
+                                offer: product.offer,
+                                charge: product.charge,
+                                size: product.size,
+                            },
+                        }
+                    )
+                    .then((response) => {
+                        resolve(response);
+                    });
+            }
+            // image 3
+            if (product.image3) {
+                db.get()
+                    .collection(collections.PRODUCT_COLLECTION)
+                    .updateOne(
+                        { _id: new ObjectId(id) },
+                        {
+                            $set: {
+                                name: product.name,
+                                price: product.price,
+                                category: product.category,
+                                offer: product.offer,
+                                charge: product.charge,
+                                size: product.size,
+                                image3: product.image3,
                             },
                         }
                     )
@@ -335,12 +417,12 @@ module.exports = {
                 .updateOne(
                     {},
                     {
-                        $pull: {category:{name:name  },}
+                        $pull: { category: { name: name } },
                     }
                 );
 
             console.log(category);
-            resolve(category)
+            resolve(category);
         });
     },
 };

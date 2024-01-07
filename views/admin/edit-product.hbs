@@ -84,7 +84,7 @@
                             selected
                         >{{product.category}}</option>
                         {{#each category}}
-                        <option value="{{this}}">{{this}}</option>
+                            <option value="{{this}}">{{this}}</option>
                         {{/each}}
 
                     </select>
@@ -120,20 +120,53 @@
                     class="col-12 text-light bg-dark mt-3 text-center"
                     style="border-radius: 2em;"
                 >
-                    <h3 class=""><i> Image</i></h3>
-                    <img
-                        src="{{product.image}}"
-                        class="w-25 mb-2"
-                        alt=""
-                        id="img-pre"
-                        style="border-radius: 1em;"
-                    />
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-4">
+                                <h3 class=""><i> Image1</i></h3>
+                                <img
+                                    src="{{product.image}}"
+                                    class="w-100 mb-2"
+                                    alt=""
+                                    id="img-pre"
+                                    style="border-radius: 1em;"
+                                />
+                            </div>
+                            <div class="col-4">
+                                <h3 class=""><i> Image2</i></h3>
+                                <img
+                                    src="{{product.image2}}"
+                                    class="w-100 mb-2"
+                                    alt=""
+                                    id="img-pre2"
+                                    style="border-radius: 1em;"
+                                />
+                            </div>
+                            <div class="col-4">
+                                <h3 class=""><i> Image3</i></h3>
+                                <img
+                                    src="{{product.image3}}"
+                                    class="w-100 mb-2"
+                                    alt=""
+                                    id="img-pre3"
+                                    style="border-radius: 1em;"
+                                />
+                            </div>
+                        </div>
+                    </div>
                 </div>
+{{!--  --}}
+{{!--  --}}
+
+
+
+
+
                 {{! image file  }}
                 <div class="col-12 mt-3">
                     <div class="input-group">
                         <input
-                            onchange="viewimage(event)"
+                            onchange="viewimage(event,1)"
                             id="productimage"
                             name="image"
                             type="file"
@@ -145,11 +178,68 @@
                 {{! hiddedinput }}
                 <input
                     type="text"
-                    hidden
                     value=""
                     name="image"
                     id="hideinput"
+                    hidden
                 />
+                
+                {{! image file2  }}
+                <div class="col-12 mt-3">
+                    <div class="input-group">
+                        <input
+                            onchange="viewimage(event,2)"
+                            id="productimage2"
+                            type="file"
+                            class="form-control"
+                            aria-label="Upload"
+                        />
+                    </div>
+                </div>
+                {{! hiddedinput }}
+                <input
+                    type="text"
+                    value=""
+                    name="image2"
+                    id="hideinput2"
+                    hidden
+                />
+                
+                {{! image file 3 }}
+                <div class="col-12 mt-3">
+                    <div class="input-group">
+                        <input
+                            onchange="viewimage(event,3)"
+                            id="productimage3"
+                            type="file"
+                            class="form-control"
+                            aria-label="Upload"
+                        />
+                    </div>
+                </div>
+                {{! hiddedinput }}
+                <input
+                    type="text"
+                    value=""
+                    name="image3"
+                    id="hideinput3"
+                    hidden
+                />
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{!--  --}}
+{{!--  --}}
                 {{! submit button }}
                 <div class="col-12 mt-3">
                     <input
