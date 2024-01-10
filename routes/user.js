@@ -3,6 +3,7 @@ var router = express.Router();
 var producthelper = require("../helpers/product-helpers");
 var userhelpers = require("../helpers/user-helpers");
 var fs = require("fs");
+const userHelpers = require("../helpers/user-helpers");
 
 const verifylogin = (req, res, next) => {
     if (req.session.loggedin) {
@@ -29,10 +30,9 @@ router.get("/", async (req, res, next) => {
     });
 });
 router.get("/products", async function (req, res) {
-
-    let obj=await userhelpers.getcategoriesforproductpage()
-    let obj2=await userhelpers.getcategoriesforproductpage()
-    let scroller= await userhelpers.getcategoryforscroller()
+    let obj = await userhelpers.getcategoriesforproductpage();
+    let obj2 = await userhelpers.getcategoriesforproductpage();
+    let scroller = await userhelpers.getcategoryforscroller();
     let user = req.session.user;
     let cartcount = null;
     if (user) {
@@ -50,7 +50,7 @@ router.get("/products", async function (req, res) {
         }
     }
     console.log(result);
-    res.render("user/products", { result, scroller});
+    res.render("user/products", { result, scroller });
 });
 router.get("/login", (req, res) => {
     if (req.session.loggedin) {
@@ -136,6 +136,15 @@ router.get("/addtocart/:id", verifylogin, (req, res) => {
         res.json({ status: false });
     }
 });
+
+router.get("/buynow/:id", verifylogin, (req, res) => {
+    userHelpers
+        .addtocart(req.params.id, req.session.user._id)
+        .then((response) => {
+            res.redirect("/cart");
+        });
+});
+
 router.post("/change-product-quantity", verifylogin, (req, res) => {
     userhelpers
         .changeproductquantity(

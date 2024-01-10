@@ -82,6 +82,7 @@
                                 href="/details/{{this._id}}"
                                 class="text-decoration-none text-dark"
                             >
+
                                 <div
                                     id="carouselId"
                                     class="carousel"
@@ -130,6 +131,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </a>
                             <div class="card-body bg-light">
 
@@ -145,12 +147,19 @@
                                         {{this.offer}}% off
                                     </p>
                                 </div>
-                                <p class="card-text mt-1">Price: ₹<span
-                                        style="color: #896633;"
-                                        class="text-decoration-underline"
-                                    >{{this.price}}</span></p>
                                 <div
-                                    style="background-color: rgb(180, 180, 180); border-radius: 1em; margin-top: -0.5em;"
+                                    style="background-color: rgb(32, 203, 233);; border-radius: 1em;"
+                                >
+                                    <p
+                                        class="card-text mt-1"
+                                        style="margin-left: 1em;"
+                                    >Price: ₹<span
+                                            style="color: #896633;"
+                                            class="text-decoration-underline"
+                                        >{{this.price}}</span></p>
+                                </div>
+                                <div
+                                    style="background-color: rgb(180, 180, 180); border-radius: 1em; margin-top: 0.25em;"
                                 >
                                     <p
                                         class="card-text"
@@ -161,13 +170,27 @@
                                         >{{this.charge}}</span>
                                     </p>
                                 </div>
-                                <button
-                                    class="btn mt-1 m-auto w-100 mt-3"
-                                    onclick="addtocart('{{this._id}}')"
-                                    style="background-color: #896633; color: white; "
-                                >
-                                    <i class="bi bi-cart4"></i>
-                                </button>
+
+                                <div class="row">
+                                    <div class="col-8">
+                                        <a
+                                            href="/buynow/{{this._id}}"
+                                            class="btn mt-1 m-auto w-100 mt-3"
+                                            style="background-color: #896633; color: white;height: 2.5em; "
+                                        >
+                                            Buy Now
+                                        </a>
+                                    </div>
+                                    <div class="col-4">
+                                        <button
+                                            class="btn mt-1 m-auto w-100 mt-3"
+                                            onclick="addtocart('{{this._id}}')"
+                                            style="background-color: #098f41; color: white;height: 2.5em; "
+                                        >
+                                            <i class="bi bi-cart4"></i>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
